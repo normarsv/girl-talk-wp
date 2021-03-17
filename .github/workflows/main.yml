@@ -1,0 +1,25 @@
+name: App Release
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment
+          uses: appleboy/ssh-action@main
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            username: ${{ secrets.SSH_USERNAME }}
+            script: |
+              cd /var/www/html/girl_talk
+              git checkout -f
+              git pull
+#              cd wp-content/themes/girl-talk
+#              npm install && npm run prod
