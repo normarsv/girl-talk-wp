@@ -8,7 +8,8 @@ module.exports = {
             center: true,
         },
         fontFamily: {
-            'sans': 'ArticulatCF-Regular',
+            'sans': 'ArticulatCF-Normal',
+            // 'sans': 'ArticulatCF-Regular',
             'title': 'WayfinderCF-Bold'
         },
         extend: {
@@ -17,16 +18,14 @@ module.exports = {
                 'accent-light': '#FFECF2',
                 'black': '#000000',
                 'dark': '#231F20'
-            }
-        },
-        screens: { //This is to remove xxl size
-            'sm': '640px',
-            'md': '768px',
-            'lg': '1024px',
-            'xl': '1280px',
+            },
+            boxShadow: {
+                accent: '8px 8px 20px #F9BDC6',
+            },
         },
     },
     plugins: [
         require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
     ],
 };

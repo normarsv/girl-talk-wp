@@ -3,15 +3,22 @@
 @tailwind utilities;
 
 @font-face {
+    font-family: "ArticulatCF-Normal";
+    src: url(fonts/articulatcf-normal.otf) format("opentype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
     font-family: "ArticulatCF-Regular";
-    src: url(../fonts/articulatcf-regular.otf) format("opentype");
+    src: url(fonts/articulatcf-regular.otf) format("opentype");
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: "WayfinderCF-Bold";
-    src: url(../fonts/wayfindercf_bold.otf) format("opentype");
+    src: url(fonts/wayfindercf_bold.otf) format("opentype");
     font-style: normal;
     font-weight: 700;
 }
