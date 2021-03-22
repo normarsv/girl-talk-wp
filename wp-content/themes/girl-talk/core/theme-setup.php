@@ -17,6 +17,21 @@ if (function_exists('acf_add_options_page')) {
     ]);
 }
 
+add_action('admin_init', function () {
+    wp_admin_css_color('girl_talk', __('Girl Talk'),
+        get_template_directory_uri() . '/core/cms-scheme/girl.css',
+        ['#1d2327', '#2c3338', '#70585a', '#ba7a81']
+    );
+});
+
+add_action('user_register', function ($user_id) {
+    $args = array(
+        'ID' => $user_id,
+        'admin_color' => 'girl_talk'
+    );
+    wp_update_user($args);
+});
+
 // add_editor_style(getEditorStyleSheet());
 
 // add_filter('mce_buttons_2', function ($buttons) {
