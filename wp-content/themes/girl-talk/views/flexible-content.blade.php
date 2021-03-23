@@ -12,7 +12,14 @@
 
             @if(get_row_layout() == 'hero')
                 @include('components.hero', [
-                    'is_home_hero' => get_sub_field('is_home_hero'),
+                    'header' => get_sub_field('header'),
+                    'cta' => get_sub_field('cta'),
+                ])
+            @endif
+
+            @if(get_row_layout() == 'intros_text')
+                @include('components.intros-text', [
+                    'cards' => get_sub_field('cards'),
                 ])
             @endif
 
