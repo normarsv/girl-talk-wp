@@ -6,7 +6,7 @@
                 <div class="flex flex-col lg:flex-row justify-between items-center md:px-24 py-10 lg:py-0 {{$card['image_position'] == 'right' ? 'lg:flex-row-reverse' : ''}}">
                     <div class="w-52 md:w-80 xl:w-96 shadow-lg">
                         <div class="aspect-w-8 aspect-h-10">
-                            <img src="{{$card['image']['sizes']['thumbnail']}}" alt="placeholder"
+                            <img src="{{$card['image']['sizes']['large']}}" alt="placeholder"
                                  class="w-full h-full rounded">
                         </div>
                     </div>
