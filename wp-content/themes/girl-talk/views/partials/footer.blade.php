@@ -4,17 +4,23 @@
         <div class="container m-auto flex flex-col md:flex-row relative justify-between pb-28 ">
             <div class="flex flex-col space-y-6">
                 <img class="w-24 h-24" src="@asset('images/gt_logo_round.png')" alt="Girl Talk Logo">
-                <h3 class="font-title text-3xl">A safe space to give and get advice.</h3>
+                <h3 class="font-title text-3xl">{{get_field('footer_heading','option')}}</h3>
                 <div class="flex space-x-3">
-                    <a href="" aria-label="Instagram"><img src="@asset('images/icons/instagram.png')" class="w-11 h-11" alt=""></a>
-                    <a href="" aria-label="facebook"><img src="@asset('images/icons/facebook.png')" class="w-11 h-11" alt=""></a>
-                    <a href="" aria-label="twitter"><img src="@asset('images/icons/twitter.png')" class="w-9 h-9 mt-1 ml-1" alt=""></a>
+                    <a href="{{ get_field('instagram_link','option') }}" aria-label="Instagram"><img
+                                src="@asset('images/icons/instagram.png')" class="w-11 h-11"
+                                alt=""></a>
+                    <a href="{{ get_field('facebook_link','option') }}" aria-label="facebook"><img
+                                src="@asset('images/icons/facebook.png')" class="w-11 h-11"
+                                alt=""></a>
+                    <a href="{{ get_field('twitter_link','option') }}" aria-label="twitter"><img
+                                src="@asset('images/icons/twitter.png')"
+                                class="w-9 h-9 mt-1 ml-1" alt=""></a>
                 </div>
             </div>
 
             <div class="flex flex-col space-y-3 mt-16">
-                <h3 class="font-title text-3xl">We like to check-in.</h3>
-                <p>Sign up to receive love notes and updates from us. <br> Unsubscribe anytime.</p>
+                <h3 class="font-title text-3xl">{{ get_field('subscribe_title','option') }}</h3>
+                <p>{!! get_field('subscribe_copy','option') !!}</p>
                 <form action="{{ admin_url( 'admin-ajax.php' ) }}" method="POST" id="newsletter-form">
                     <div class="relative rounded-sm shadow-lg">
                         <input type="email" name="email" id="email_newsletter"
@@ -35,7 +41,7 @@
             </div>
 
             <div class="absolute bottom-0 left-5 text-sm">
-                <p>© 2021 We Need to Girl Talk. All rights reserved.</p>
+                <p>{{ get_field('footer_copyright','option') }}</p>
                 <div class="flex flex-row space-x-5 md:space-x-3 underline">
                     {!!
                         strip_tags(wp_nav_menu([
