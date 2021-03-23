@@ -146,16 +146,16 @@ textarea:focus {
     color: #fff;
 }
 .wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:focus {
-    background: #4664eb;
-    border-color: #2a4ce7;
+    background: #70585a;
+    border-color: #55474a;
     color: #fff;
 }
 .wp-core-ui .button-primary:focus {
     box-shadow: 0 0 0 1px #fff, 0 0 0 3px #ba7a81;
 }
 .wp-core-ui .button-primary:active {
-    background: #2145e6;
-    border-color: #2145e6;
+    background: #70585a;
+    border-color: #70585a;
     color: #fff;
 }
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover {
@@ -502,7 +502,7 @@ ul#adminmenu > li.current > a.current:after {
 /* Pointers */
 .wp-pointer .wp-pointer-content h3 {
     background-color: #ba7a81;
-    border-color: #2145e6;
+    border-color: #70585a;
 }
 
 .wp-pointer .wp-pointer-content h3:before {

@@ -6,11 +6,15 @@ module.exports = {
     theme: {
         container: {
             center: true,
+            padding: {
+                DEFAULT: '1.25rem',
+                md: '2rem',
+                lg: '1.25rem'
+            },
         },
         fontFamily: {
             'sans': 'ArticulatCF-Normal',
-            // 'sans': 'ArticulatCF-Regular',
-            'title': 'WayfinderCF-Bold'
+            'title': 'WayfinderCF'
         },
         extend: {
             colors: {

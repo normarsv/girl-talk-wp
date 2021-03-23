@@ -8,3 +8,4 @@ include_once('core/custom-post-types.php');
 include_once('core/acf-configuration.php');
 include_once('core/helpers.php');
 include_once('core/theme-setup.php');
+include_once('core/ajax_functions.php');

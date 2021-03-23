@@ -2,8 +2,9 @@
 
 // Register nav menus
 register_nav_menus([
+    'main-nav-guests' => 'Main Nav Guests',
     'main-nav' => 'Main Nav',
-    'footer-nav' => 'Footer Nav'
+    'footer-nav' => 'Footer Nav',
 ]);
 
 
@@ -30,6 +31,18 @@ add_action('user_register', function ($user_id) {
         'admin_color' => 'girl_talk'
     );
     wp_update_user($args);
+});
+
+// Adds support for adding custom classes to each menu item (no li)
+add_filter('wp_nav_menu', function ($wp_nav_menu, $args) {
+    if (isset($args->add_item_class) && $args->add_item_class != '') {
+        $wp_nav_menu = preg_replace('/<a /', '<a class="' . $args->add_item_class . '"', $wp_nav_menu);
+    }
+    return $wp_nav_menu;
+}, 1, 2);
+
+// Remove support to automatically create new contacts on flamingo
+add_action('flamingo_add_contact',function(){
 });
 
 // add_editor_style(getEditorStyleSheet());

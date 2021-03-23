@@ -14,6 +14,7 @@ class Bladerunner
         $upload_dir = wp_upload_dir();
         $this->cache = $upload_dir['basedir'] . '/cache';
         $this->blade = new BladeOne($this->view, $this->cache, BladeOne::MODE_DEBUG);
+        $this->blade->setBaseUrl(get_template_directory_uri() . '/dist/');
     }
 
     public function view($view, $variables)

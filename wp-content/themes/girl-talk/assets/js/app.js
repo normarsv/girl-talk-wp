@@ -1,8 +1,10 @@
 import navigation from "./navigation";
+import newsletter from "./newsletter";
 
 function init() {
     const components = [
         navigation,
+        newsletter,
     ];
 
     components.forEach(component => {

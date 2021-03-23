@@ -17,8 +17,15 @@
 }
 
 @font-face {
-    font-family: "WayfinderCF-Bold";
-    src: url(fonts/wayfindercf_bold.otf) format("opentype");
+    font-family: "WayfinderCF";
+    src: url(fonts/wayfindercf-bold.otf) format("opentype");
     font-style: normal;
     font-weight: 700;
+}
+
+@font-face {
+    font-family: "WayfinderCF";
+    src: url(fonts/wayfindercf-regular.otf) format("opentype");
+    font-style: normal;
+    font-weight: 400;
 }

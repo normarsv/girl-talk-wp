@@ -7,12 +7,11 @@
 
     <link href="{{ mix('app.css') }}" type="text/css" rel="stylesheet">
 
-    {{ wp_head() }}
+    @php wp_head() @endphp
 
     {{-- @include('partials.favicon') --}}
 </head>
-
-<body {{ body_class('bg-accent-light') }}>
+<body @php body_class(get_field('background_color')) @endphp>
 
 @include('partials.navigation')
 
@@ -26,10 +25,7 @@
     </div>
 
     <div>
-        <svg height="100%" width="100%" viewBox="0 0 1920 190" xmlns="http://www.w3.org/2000/svg">
-            <path d="m223.736 2.93193c-91.544 3.34597-140.4325 10.78147-223.736 32.93177v754.1363h1920v-781.14036c-22.28-1.7373-33.61-1.60751-52.36 0-36.22 3.10146-56.59 5.40226-93.62 15.80726-93.56 30.9378-153.75 50.638-256.27 84.3051-88 23.784-139.28 33.628-238.01 38.201-104.08 1.265-162.28.26-265-13.173-129.601-20.4-197.721-36.3524-314.178-69.8151-98.616-28.8602-157.059-40.0065-264.992-54.008-80.887-9.52145-127.34-11.05674-211.834-7.24497z"
-                  fill="#f9bdc6" stroke="#f9bdc6"/>
-        </svg>
+        @include('elements.wave',['inverted'=>false])
         <div class="bg-accent">
             <div class="container m-auto flex flex-col">
                 <div class="flex flex-col lg:flex-row justify-between items-center md:px-24 py-10 lg:py-0">
@@ -63,17 +59,13 @@
                 </div>
             </div>
         </div>
-        <svg height="100%" width="100%" viewBox="0 0 1920 190" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1696.26 157.406C1787.81 154.645 1836.7 148.51 1920 130.234L1920 -492L0 -492L0 152.515C22.28 153.948 33.61 153.841 52.36 152.515C88.58 149.956 108.95 148.058 145.98 139.473C239.54 113.946 299.73 97.6914 402.25 69.9128C490.25 50.2888 541.53 42.1665 640.26 38.3934C744.34 37.3496 802.54 38.1789 905.26 49.2624C1034.86 66.0943 1102.98 79.2565 1219.44 106.866C1318.05 130.679 1376.5 139.876 1484.43 151.428C1565.32 159.284 1611.77 160.551 1696.26 157.406Z" fill="#F9BDC6" stroke="#F9BDC6"/>
-        </svg>
-
+        @include('elements.wave', ['inverted'=>true])
     </div>
-
 </main>
 
-{{-- @include('partials.footer') --}}
+ @include('partials.footer')
 
 <script src="{{ mix('app.js') }}" type="application/javascript"></script>
-{{ wp_footer() }}
+ @php wp_footer() @endphp
 </body>
 </html>
