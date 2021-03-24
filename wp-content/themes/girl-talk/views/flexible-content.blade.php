@@ -23,6 +23,18 @@
                 ])
             @endif
 
+            @if(get_row_layout() == 'rotating_text')
+                @include('components.rotating-text', [
+                    'text' => get_sub_field('text'),
+                ])
+            @endif
+
+            @if(get_row_layout() == 'testimonials')
+                @include('components.testimonials', [
+                    'cards' => get_sub_field('cards'),
+                ])
+            @endif
+
         @endwhile
 
     @endwhile

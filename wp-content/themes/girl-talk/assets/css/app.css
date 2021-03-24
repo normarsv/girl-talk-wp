@@ -29,3 +29,20 @@
     font-style: normal;
     font-weight: 400;
 }
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: translateX(0)
+    }
+    1% {
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+.animate-scroll-infinite {
+    animation: scroll 15s linear infinite;
+}
