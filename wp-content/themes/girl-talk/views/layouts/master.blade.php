@@ -9,7 +9,7 @@
 
     @php wp_head() @endphp
 
-    {{-- @include('partials.favicon') --}}
+     @include('partials.favicon')
 </head>
 <body @php body_class(get_field('background_pink') ? 'bg-accent-light':'bg-white') @endphp>
 
