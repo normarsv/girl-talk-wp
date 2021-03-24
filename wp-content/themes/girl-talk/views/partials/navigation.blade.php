@@ -1,7 +1,7 @@
 <header class="container px-6 py-6 mx-auto md:flex md:justify-between md:items-center">
     <div class="flex items-center justify-between">
         <div>
-            <a class="" href="#"><img class="w-44" src="@asset('images/gt_logo.png')" alt=""></a>
+            <a class="" href="/"><img class="w-44" src="@asset('images/gt_logo.png')" alt=""></a>
         </div>
 
         {{--Mobile menu button--}}
