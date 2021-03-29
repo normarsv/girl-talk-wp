@@ -1,4 +1,4 @@
-<header class="container px-6 py-6 mx-auto md:flex md:justify-between md:items-center">
+<header class="container px-6 py-6 mx-auto md:flex md:justify-between md:items-center max-w-none xl:max-w-screen-2xl">
     <div class="flex items-center justify-between">
         <div>
             <a class="" href="/"><img class="w-44" src="@asset('images/gt_logo.png')" alt=""></a>
@@ -19,7 +19,7 @@
 
     {{--Mobile Menu open: "block", Menu closed: "hidden"--}}
     <div class="items-center py-8 md:py-0 md:flex hidden" id="navigation">
-        <nav class="flex flex-col md:flex-row lg:mx-6">
+        <nav class="flex flex-col md:flex-row lg:ml-6">
             @if(!is_user_logged_in())
                 {!!
                     strip_tags(wp_nav_menu([

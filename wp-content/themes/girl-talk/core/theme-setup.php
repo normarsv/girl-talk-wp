@@ -42,51 +42,39 @@ add_filter('wp_nav_menu', function ($wp_nav_menu, $args) {
 }, 1, 2);
 
 // Remove support to automatically create new contacts on flamingo
-add_action('flamingo_add_contact',function(){
+add_action('flamingo_add_contact', function () {
 });
 
-// add_editor_style(getEditorStyleSheet());
+add_action('init', function () {
+    if (isset($_GET['account-verify'])) {
+        $data = unserialize(base64_decode($_GET['account-verify']));
+        $code = get_user_meta($data['id'], 'verify_token', true);
 
-// add_filter('mce_buttons_2', function ($buttons) {
-//     array_unshift($buttons, 'styleselect');
-//     return $buttons;
-// });
+        if ($code == $data['code']) {
+            update_user_meta($data['id'], 'account_verified', true);
+            delete_user_meta($data['id'], 'verify_token');
 
-// add_filter('tiny_mce_before_init', function ($init_array) {
-//     $style_formats = [
-//         [
-//             'title' => 'Main Title',
-//             'block' => 'h1',
-//             'classes' => 'main-title',
-//             'wrapper' => false,
-//         ],
-//         [
-//             'title' => 'Secondary Title',
-//             'block' => 'h2',
-//             'classes' => 'secondary-title',
-//             'wrapper' => false,
-//         ],
-//         [
-//             'title' => 'Content Title',
-//             'block' => 'h2',
-//             'classes' => 'content-title',
-//             'wrapper' => false,
-//         ],
-//         [
-//             'title' => 'Content Caption',
-//             'block' => 'div',
-//             'classes' => 'content-caption',
-//             'wrapper' => false,
-//         ],
-//         [
-//             'title' => 'CTA Button',
-//             'block' => 'a',
-//             'classes' => 'cta default',
-//             'wrapper' => false,
-//         ],
-//     ];
+            wp_clear_auth_cookie();
+            wp_set_current_user($data['id']);
+            wp_set_auth_cookie($data['id']);
 
-//     $init_array['style_formats'] = json_encode($style_formats);
+            wp_safe_redirect(home_url('profile-completion'));
+        }
+    }
+});
 
-//     return $init_array;
-// });
+add_action('phpmailer_init', function ($phpmailer) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host = SMTP_HOST;
+    $phpmailer->Port = SMTP_PORT;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Username = SMTP_USERNAME;
+    $phpmailer->Password = SMTP_PASSWORD;
+    $phpmailer->From = 'no-reply@girltalk.com';
+    $phpmailer->FromName = 'Girl Talk';
+});
+
+add_filter('wp_mail_content_type', function () {
+    return "text/html";
+});

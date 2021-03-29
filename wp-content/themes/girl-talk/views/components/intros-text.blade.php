@@ -1,7 +1,7 @@
 <section>
     @include('elements.wave',['inverted'=>false])
     <div class="bg-accent">
-        <div class="container m-auto flex flex-col">
+        <div class="container flex flex-col">
             @foreach($cards as $card)
                 @php $is_position_right = $card['image_position'] == 'right' @endphp
                 <div class="flex flex-col lg:flex-row justify-between items-center md:px-24 py-10 lg:py-0 {{$is_position_right ? 'lg:flex-row-reverse' : ''}}">

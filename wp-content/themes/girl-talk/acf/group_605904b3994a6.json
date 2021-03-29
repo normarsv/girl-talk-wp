@@ -4,8 +4,32 @@
     "fields": [
         {
             "key": "field_605904cec63fb",
-            "label": "Background Pink",
-            "name": "background_pink",
+            "label": "Background Color",
+            "name": "background_color",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "pink": "Pink",
+                "white": "White"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_605e6265498d9",
+            "label": "Footer Remove Wave",
+            "name": "footer_remove_wave",
             "type": "true_false",
             "instructions": "",
             "required": 0,
@@ -27,6 +51,13 @@
             {
                 "param": "page_template",
                 "operator": "==",
+                "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
                 "value": "flexible-content.php"
             }
         ]
@@ -39,5 +70,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1616530364
+    "modified": 1616800448
 }

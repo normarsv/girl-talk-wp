@@ -35,6 +35,22 @@
                 ])
             @endif
 
+            @if(get_row_layout() == 'profile_description')
+                @include('components.profile-description', [
+                    'title' => get_sub_field('title'),
+                    'body' => get_sub_field('body'),
+                    'image_profile' => get_sub_field('image_profile'),
+                ])
+            @endif
+
+            @if(get_row_layout() == 'contact_us')
+                @include('components.contact-us', [
+                    'title' => get_sub_field('title'),
+                    'description' => get_sub_field('description'),
+                    'cards' => get_sub_field('cards'),
+                ])
+            @endif
+
         @endwhile
 
     @endwhile

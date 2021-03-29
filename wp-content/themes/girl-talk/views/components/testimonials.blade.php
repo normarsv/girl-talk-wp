@@ -1,5 +1,5 @@
 <section class="py-14">
-    <div class="flex flex-col space-y-16 container m-auto">
+    <div class="flex flex-col space-y-16 container">
         @foreach($cards as $card)
             <div class="bg-white shadow-accent shadow-lg p-10 lg:w-3/5 rounded-2xl {{$loop->odd ? 'self-end' : ''}}">
                 <span class="text-2xl">{!! $card['body'] !!}</span>

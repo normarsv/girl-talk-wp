@@ -1,7 +1,9 @@
 <footer>
-    @include('elements.wave',['inverted'=>false])
+    @if(!get_field('footer_remove_wave'))
+        @include('elements.wave',['inverted'=>false])
+    @endif
     <div class="bg-accent pb-5">
-        <div class="container m-auto flex flex-col md:flex-row relative justify-between pb-28 ">
+        <div class="container flex flex-col md:flex-row relative justify-between pb-28 max-w-none xl:max-w-screen-2xl">
             <div class="flex flex-col space-y-6">
                 <img class="w-24 h-24" src="@asset('images/gt_logo_round.png')" alt="Girl Talk Logo">
                 <h3 class="font-title text-3xl">{{get_field('footer_heading','option')}}</h3>

@@ -1,10 +1,12 @@
 import navigation from "./navigation";
 import newsletter from "./newsletter";
+import register from "./register";
 
 function init() {
     const components = [
         navigation,
         newsletter,
+        register,
     ];
 
     components.forEach(component => {

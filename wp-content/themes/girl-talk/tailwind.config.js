@@ -13,7 +13,7 @@ module.exports = {
             },
         },
         fontFamily: {
-            'sans': 'ArticulatCF-Normal',
+            'sans': 'ArticulatCF',
             'title': 'WayfinderCF'
         },
         extend: {
@@ -27,9 +27,18 @@ module.exports = {
                 accent: '8px 8px 20px #F9BDC6',
             },
         },
+        minWidth: {
+            '400': '400px',
+        }
+    },
+    variants: {
+        extend: {
+            backgroundColor: ['label-checked'], // you need add new variant to a property you want to extend
+        },
     },
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/typography'),
     ],
 };
