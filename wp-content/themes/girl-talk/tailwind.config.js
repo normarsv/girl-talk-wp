@@ -31,11 +31,6 @@ module.exports = {
             '400': '400px',
         }
     },
-    variants: {
-        extend: {
-            backgroundColor: ['label-checked'], // you need add new variant to a property you want to extend
-        },
-    },
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
