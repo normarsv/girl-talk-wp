@@ -29,6 +29,14 @@ module.exports = {
         },
         minWidth: {
             '400': '400px',
+        },
+        maxWidth: {
+            '650': '650px',
+        }
+    },
+    variants: {
+        extend: {
+            backgroundColor: ['checked'],
         }
     },
     plugins: [

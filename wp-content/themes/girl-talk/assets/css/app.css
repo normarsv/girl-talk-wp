@@ -46,3 +46,7 @@
 .animate-scroll-infinite {
     animation: scroll 15s linear infinite;
 }
+
+.radio-button-active {
+    @apply text-white bg-accent;
+}
