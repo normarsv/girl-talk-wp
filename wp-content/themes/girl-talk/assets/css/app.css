@@ -50,3 +50,7 @@
 .radio-button-active {
     @apply text-white bg-accent;
 }
+
+a.nav-link[aria-current="page"] {
+    @apply text-accent underline;
+}

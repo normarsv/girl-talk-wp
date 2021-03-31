@@ -26,7 +26,7 @@
                     'theme_location' => 'main-nav-guests',
                     'container'  => false,
                     'echo'       => false,
-                    'add_item_class'  => 'my-1 text-md font-bold md:font-medium text-dark hover:text-accent hover:underline my-3 md:mx-4 md:my-0',
+                    'add_item_class'  => 'my-1 text-md font-bold md:font-medium text-dark hover:text-accent hover:underline my-3 md:mx-4 md:my-0 nav-link',
                     'items_wrap' => '%3$s'
                     ]),'<a>');
                 !!}
@@ -36,7 +36,7 @@
                     'theme_location' => 'main-nav',
                     'container'  => false,
                     'echo'       => false,
-                    'add_item_class'  => 'my-1 text-md font-bold md:font-medium text-dark hover:text-accent hover:underline my-3 md:mx-4 md:my-0',
+                    'add_item_class'  => 'my-1 text-md font-bold md:font-medium text-dark hover:text-accent hover:underline my-3 md:mx-4 md:my-0 nav-link',
                     'items_wrap' => '%3$s'
                     ]),'<a>');
                 !!}

@@ -51,6 +51,14 @@
                 ])
             @endif
 
+            @if(get_row_layout() == 'resources')
+                @include('components.resources', [
+                    'title' => get_sub_field('title'),
+                    'description' => get_sub_field('description'),
+                    'cards' => get_sub_field('cards'),
+                ])
+            @endif
+
         @endwhile
 
     @endwhile
