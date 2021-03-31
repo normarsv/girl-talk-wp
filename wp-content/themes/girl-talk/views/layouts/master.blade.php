@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}">
+<html lang="en">
 <head>
     <meta charset="{{ bloginfo('charset') }}">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">

@@ -38,12 +38,14 @@ function register_form()
     $email = sanitize_email($_POST['email']);
     $username = sanitize_user($_POST['username']);
     $password = $_POST['password'];
-    $valid = $_POST['valid'];
 
-    if (!wp_verify_nonce($valid, 'register')) {
-        echo wp_json_encode(['status' => false, 'valid' => 'invalid']);
-        wp_die();
-    }
+    // TODO: find a workaround to this for security purposes
+    //    $valid = $_POST['valid'];
+    //
+    //    if (!wp_verify_nonce($valid, 'register')) {
+    //        echo wp_json_encode(['status' => false, 'valid' => 'invalid']);
+    //        wp_die();
+    //    }
 
     $username_exists = username_exists($username);
     $email_exists = email_exists($email);
@@ -53,6 +55,27 @@ function register_form()
     }
 
     gt_create_user($username, $password, $email);
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_profile_completion', 'profile_completion');
+add_action('wp_ajax_profile_completion', 'profile_completion');
+
+function profile_completion()
+{
+    $thisthat = $_POST['thisthat'];
+    $icon = sanitize_text_field($_POST['icon']);
+    $howdidyouhear = sanitize_text_field($_POST['howdidyouhear']);
+    $user_id = get_current_user_id();
+
+    update_user_meta($user_id, 'gt_thisthat', $thisthat);
+    update_user_meta($user_id, 'gt_icon', $icon);
+    update_user_meta($user_id, 'gt_how_hear', $howdidyouhear);
+
+    update_user_meta($user_id, 'account_verified', true);
+    delete_user_meta($user_id, 'verify_token');
 
     echo wp_json_encode(['status' => true]);
     wp_die();

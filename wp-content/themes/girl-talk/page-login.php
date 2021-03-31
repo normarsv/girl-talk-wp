@@ -1,3 +1,3 @@
 <?php
 
-echo view('register');
+echo view('login');

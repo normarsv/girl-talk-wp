@@ -27,14 +27,32 @@ function gt_create_user($username, $password, $email)
 {
     $user_id = wp_create_user($username, $password, $email);
 
-    add_user_meta($user_id, 'account_verified', false);
-    add_user_meta($user_id, 'user_settings', []);
+    add_user_meta($user_id, 'account_verified', 0);
+    add_user_meta($user_id, 'gt_thisthat', []);
+    add_user_meta($user_id, 'gt_icon', '');
+    add_user_meta($user_id, 'gt_how_hear', '');
 
     $token = md5(time());
     add_user_meta($user_id, 'verify_token', $token);
 
-    $url = get_site_url() . '/my-account/?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
+    $url = get_site_url() . '?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
     $html = 'Please validate your account <br/><br/> <a href="' . $url . '">' . $url . '</a>';
 
     wp_mail("gera919@gmail.com", 'GT verify your account', $html);
+}
+
+function gt_redirect_verified_users()
+{
+    $user_id = get_current_user_id();
+    if (!$user_id || get_user_meta($user_id, 'account_verified', true)) {
+        wp_safe_redirect('my-account');
+    }
+}
+
+function gt_redirect_non_verified_users()
+{
+    $user_id = get_current_user_id();
+    if (!$user_id || !get_user_meta($user_id, 'account_verified', true)) {
+        wp_safe_redirect('profile-completion');
+    }
 }

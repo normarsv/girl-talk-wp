@@ -4,7 +4,7 @@ export default function () {
         $email = $form.find('#email'),
         $confirm_email = $form.find('#confirm_email'),
         $password = $form.find('#password'),
-        valid = $form.find('#n_valid').val()
+        $submit_btn = $form.find('#register_submit')
     ;
 
     $form.on('submit', (e) => {
@@ -25,6 +25,8 @@ export default function () {
             return
         }
 
+        $submit_btn.attr('disabled', 'disabled')
+
         $.ajax({
             url: $form.attr('action'),
             type: 'POST',
@@ -33,7 +35,6 @@ export default function () {
                 'username': $username.val(),
                 'email': $email.val(),
                 'password': $password.val(),
-                'valid': valid,
             },
             success: function (data) {
                 const response = JSON.parse(data);
@@ -44,6 +45,7 @@ export default function () {
                     document.documentElement.scrollTop = 0;
                     return
                 }
+                $submit_btn.removeAttr('disabled')
 
                 if (response.valid === 'invalid') {
                     alert('Something was wrong during the form submission. Refresh and try again.')

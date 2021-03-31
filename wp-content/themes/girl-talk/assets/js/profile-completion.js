@@ -46,6 +46,29 @@ export default function () {
             return
         }
 
+        if (!$container.find('#advice_check').prop('checked')
+            || !$container.find('#agreement_check').prop('checked')) {
+            alert('You must consent the agreements.')
+            return
+        }
+
+        $.ajax({
+            url: $submitBtn.data('url'),
+            type: 'POST',
+            data: {
+                'action': 'profile_completion',
+                'thisthat': thisThatOptions,
+                'icon': iconOption,
+                'howdidyouhear': howDidYouHear,
+            },
+            success: function (data) {
+                document.location.href = '/my-account'
+            },
+            error: function (errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
     });
 }
 

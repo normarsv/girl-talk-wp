@@ -38,6 +38,7 @@ module.exports = {
     variants: {
         extend: {
             backgroundColor: ['checked'],
+            opacity: ['disabled'],
         }
     },
     plugins: [

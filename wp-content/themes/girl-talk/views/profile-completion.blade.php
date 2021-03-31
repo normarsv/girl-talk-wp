@@ -122,13 +122,13 @@
             <div class="flex flex-row items-center">
                 <input type="checkbox"
                        class="appearance-none cursor-pointer rounded-full checked:bg-accent text-accent text-xl w-5 h-5"
-                       id="newsletter_check"/>
+                       id="newsletter_check" />
                 <label for="newsletter_check" class="pl-3">Sign up for Girl Talk newsletters.</label>
             </div>
             <div class="flex flex-row items-center">
                 <input type="checkbox"
                        class="appearance-none cursor-pointer rounded-full checked:bg-accent text-accent text-xl w-5 h-5"
-                       id="advice_check"/>
+                       id="advice_check" />
                 <label for="advice_check" class="pl-3">I acknowledge that the advice on Girl Talk is not professional
                     advice and
                     I assume the risk of taking advice from my peers.</label>
@@ -136,7 +136,7 @@
             <div class="flex flex-row items-center">
                 <input type="checkbox"
                        class="appearance-none cursor-pointer rounded-full checked:bg-accent text-accent text-xl w-5 h-5"
-                       id="agreement_check"/>
+                       id="agreement_check" />
                 <label for="agreement_check" class="pl-3">I am over 18 and have read and agree to the
                     <a class="underline"
                        href="{{get_home_url(null,'privacy-policy')}}" target="_blank">user agreement</a> and
@@ -146,7 +146,7 @@
         </div>
 
         <button type="button" id="confirm_button"
-                class="m-auto block bg-accent px-16 py-2 rounded-lg font-semibold text-white text-lg">Done
+                class="m-auto block bg-accent px-16 py-2 rounded-lg font-semibold text-white text-lg" data-url="{{ admin_url( 'admin-ajax.php' ) }}">Done
         </button>
     </section>
 @endsection

@@ -42,24 +42,22 @@ add_filter('wp_nav_menu', function ($wp_nav_menu, $args) {
 }, 1, 2);
 
 // Remove support to automatically create new contacts on flamingo
-add_action('flamingo_add_contact', function () {
-});
+add_action('flamingo_add_contact', fn() => null);
 
 add_action('init', function () {
     if (isset($_GET['account-verify'])) {
         $data = unserialize(base64_decode($_GET['account-verify']));
         $code = get_user_meta($data['id'], 'verify_token', true);
 
-        if ($code == $data['code']) {
-            update_user_meta($data['id'], 'account_verified', true);
-            delete_user_meta($data['id'], 'verify_token');
-
-            wp_clear_auth_cookie();
-            wp_set_current_user($data['id']);
-            wp_set_auth_cookie($data['id']);
-
-            wp_safe_redirect(home_url('profile-completion'));
+        if ($code !== $data['code']) {
+            wp_safe_redirect('/');
         }
+
+        wp_clear_auth_cookie();
+        wp_set_current_user($data['id']);
+        wp_set_auth_cookie($data['id']);
+
+        wp_safe_redirect('profile-completion');
     }
 });
 
