@@ -653,7 +653,7 @@
                             },
                             "collapsed": "",
                             "min": 1,
-                            "max": 6,
+                            "max": 0,
                             "layout": "block",
                             "button_label": "Add Card",
                             "sub_fields": [
@@ -809,5 +809,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1617223117
+    "modified": 1617378981
 }

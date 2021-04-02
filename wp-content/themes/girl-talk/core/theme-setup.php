@@ -44,11 +44,6 @@ add_filter('wp_nav_menu', function ($wp_nav_menu, $args) {
 // Remove support to automatically create new contacts on flamingo
 add_action('flamingo_add_contact', fn() => null);
 
-// Fix for SMTP plugin?
-add_action('init', function () {
-    delete_option('schema-ActionScheduler_StoreSchema');
-});
-
 add_action('init', function () {
     if (isset($_GET['account-verify'])) {
         $data = unserialize(base64_decode($_GET['account-verify']));
