@@ -72,18 +72,18 @@
             <h3 class="text-4xl font-title">Be an icon.<span class="font-lg text-xl font-sans font-normal"> If you were an icon, what would you be?</span>
             </h3>
             <div class="grid grid-cols-3 gap-4 max-w-650 m-auto my-20">
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="1"><img
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="cowboyhat"><img
                             class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="2"><img
-                            class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="3"><img
-                            class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="4"><img
-                            class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="5"><img
-                            class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
-                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="6"><img
-                            class="w-28 m-auto py-5" src="@asset('images/cowboyhat.png')" alt=""></button>
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="butterfly"><img
+                            class="w-28 m-auto py-5" src="@asset('images/butterfly.png')" alt=""></button>
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="diamond"><img
+                            class="w-28 m-auto py-5" src="@asset('images/diamond.png')" alt=""></button>
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="heart"><img
+                            class="w-28 m-auto py-5" src="@asset('images/heart.png')" alt=""></button>
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="peony"><img
+                            class="w-28 m-auto py-5" src="@asset('images/peony.png')" alt=""></button>
+                <button type="button" class="hover:bg-accent rounded icon-picker" data-value="star"><img
+                            class="w-28 m-auto py-5" src="@asset('images/star.png')" alt=""></button>
 
             </div>
         </div>

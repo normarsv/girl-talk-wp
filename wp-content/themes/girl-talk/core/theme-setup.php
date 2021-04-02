@@ -3,8 +3,8 @@
 // Register nav menus
 register_nav_menus([
     'main-nav-guests' => 'Main Nav Guests',
-    'main-nav' => 'Main Nav',
-    'footer-nav' => 'Footer Nav',
+    'main-nav'        => 'Main Nav',
+    'footer-nav'      => 'Footer Nav',
 ]);
 
 
@@ -12,9 +12,9 @@ if (function_exists('acf_add_options_page')) {
     acf_add_options_page([
         'page_title' => 'Theme Settings',
         'menu_title' => 'Theme Settings',
-        'menu_slug' => 'theme-settings',
-        'redirect' => false,
-        'position' => '75',
+        'menu_slug'  => 'theme-settings',
+        'redirect'   => false,
+        'position'   => '75',
     ]);
 }
 
@@ -27,7 +27,7 @@ add_action('admin_init', function () {
 
 add_action('user_register', function ($user_id) {
     $args = array(
-        'ID' => $user_id,
+        'ID'          => $user_id,
         'admin_color' => 'girl_talk'
     );
     wp_update_user($args);
@@ -59,6 +59,39 @@ add_action('init', function () {
 
         wp_safe_redirect('profile-completion');
     }
+});
+
+// Prevents girl user role do login using wp-login.php
+add_filter('login_redirect', function ($redirect_to, $requested_redirect_to, $user) {
+    if (!isset($user->ID) || user_can($user->ID, 'administrator')) return $redirect_to;
+
+    if (parse_url($_SERVER['HTTP_REFERER'], PHP_URL_PATH) !== '/login/') {
+        wp_clear_auth_cookie();
+        wp_safe_redirect('/');
+    }
+    return $redirect_to;
+}, 10, 3);
+
+
+//add_action('wp_login_failed', function () {
+//    wp_redirect(home_url('/login/') . '?login=failed');
+//    exit;
+//});
+
+//
+//add_filter('authenticate', function ($user, $username, $password) {
+////    dd($user);
+//    dd(parse_url($_SERVER['HTTP_REFERER']));
+////    if ($username == "" || $password == "") {
+////        wp_redirect(home_url('/login/') . "?login=empty");
+////        exit;
+////    }
+//}, 1, 3);
+
+
+add_action('wp_logout', function () {
+    wp_redirect(home_url());
+    exit;
 });
 
 add_action('phpmailer_init', function ($phpmailer) {

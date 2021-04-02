@@ -44,13 +44,17 @@ function gt_create_user($username, $password, $email)
 function gt_redirect_verified_users()
 {
     $user_id = get_current_user_id();
-    if (!$user_id || get_user_meta($user_id, 'account_verified', true)) {
+    if (!$user_id || get_user_meta($user_id, 'account_verified', true) || current_user_can('administrator')) {
         wp_safe_redirect('my-account');
     }
 }
 
 function gt_redirect_non_verified_users()
 {
+    if (current_user_can('administrator')) {
+        return;
+    }
+
     $user_id = get_current_user_id();
     if (!$user_id || !get_user_meta($user_id, 'account_verified', true)) {
         wp_safe_redirect('profile-completion');

@@ -7,13 +7,15 @@
             <p class="text-2xl mt-5">Please sign in below with your username or email.</p>
         </div>
 
-        <form action="#" class="flex flex-col space-y-12 mt-24 md:w-96 m-auto" method="POST">
-            @include('elements.input',['name'=>'email', 'placeholder'=>'Email','type'=>'email', 'required'=>true])
-            @include('elements.input',['name'=>'password', 'placeholder'=>'Password','type'=>'password', 'required'=>true])
+        <form action="{{home_url('wp-login.php')}}" class="flex flex-col space-y-12 mt-24 md:w-96 m-auto" method="POST">
+            @include('elements.input',['name'=>'log', 'placeholder'=>'Email','type'=>'text', 'required'=>true])
+            @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>true])
+            <input type="hidden" name="redirect_to" value="{{home_url('my-account')}}">
             <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-gray-100 text-lg">Sign up
             </button>
         </form>
 
-        <p class="text-lg mt-10 text-center">Forgot your <a href="/forgot-pass" class="text-accent underline">password?</a></p>
+        <p class="text-lg mt-10 text-center">Forgot your <a href="/forgot-pass"
+                                                            class="text-accent underline">password?</a></p>
     </section>
 @endsection
