@@ -11,7 +11,7 @@
             @include('elements.input',['name'=>'log', 'placeholder'=>'Email','type'=>'text', 'required'=>true])
             @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>true])
             <input type="hidden" name="redirect_to" value="{{home_url('my-account')}}">
-            <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-gray-100 text-lg">Sign up
+            <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-gray-100 text-lg">Sign in
             </button>
         </form>
 
