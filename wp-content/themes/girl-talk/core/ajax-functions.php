@@ -35,7 +35,7 @@ add_action('wp_ajax_register', 'register_form');
 
 function register_form()
 {
-    $email = sanitize_email($_POST['email']);
+    $email = sanitize_email(strtolower($_POST['email']));
     $username = sanitize_user($_POST['username']);
     $password = $_POST['password'];
 

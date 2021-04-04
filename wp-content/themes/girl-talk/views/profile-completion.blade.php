@@ -130,7 +130,7 @@
         </div>
 
         <button type="button" id="confirm_button"
-                class="m-auto block bg-accent px-16 py-2 rounded-lg font-semibold text-white "
+                class="m-auto block bg-accent px-16 py-2 rounded-lg font-semibold text-white"
                 data-url="{{ admin_url( 'admin-ajax.php' ) }}">Done
         </button>
     </section>

@@ -25,6 +25,7 @@ add_action('admin_init', function () {
     );
 });
 
+// Automatically set the default girl_talk theme for the CMS
 add_action('user_register', function ($user_id) {
     $args = array(
         'ID'          => $user_id,
@@ -44,6 +45,7 @@ add_filter('wp_nav_menu', function ($wp_nav_menu, $args) {
 // Remove support to automatically create new contacts on flamingo
 add_action('flamingo_add_contact', fn() => null);
 
+// Hook for verify account flow
 add_action('init', function () {
     if (isset($_GET['account-verify'])) {
         $data = unserialize(base64_decode($_GET['account-verify']));
@@ -72,26 +74,32 @@ add_filter('login_redirect', function ($redirect_to, $requested_redirect_to, $us
     return $redirect_to;
 }, 10, 3);
 
+// Redirects when login failed from the front
+add_action('wp_login_failed', function () {
+    $referer = $_SERVER['HTTP_REFERER'] ?? false;
+    if ($referer && parse_url($referer)['path'] === '/login/') {
+        wp_redirect(home_url('/login') . '?login=failed');
+        exit;
+    }
+});
 
-//add_action('wp_login_failed', function () {
-//    wp_redirect(home_url('/login/') . '?login=failed');
-//    exit;
-//});
+// Redirects when login failed from the front
+add_filter('authenticate', function ($user, $username, $password) {
+    $referer = $_SERVER['HTTP_REFERER'] ?? false;
+    if ($referer && parse_url($referer)['path'] === '/login/' &&
+        ($username == "" || $password == "")) {
+        wp_redirect(home_url('/login') . "?login=empty");
+        exit;
+    }
+}, 1, 3);
 
-//
-//add_filter('authenticate', function ($user, $username, $password) {
-////    dd($user);
-//    dd(parse_url($_SERVER['HTTP_REFERER']));
-////    if ($username == "" || $password == "") {
-////        wp_redirect(home_url('/login/') . "?login=empty");
-////        exit;
-////    }
-//}, 1, 3);
-
-
-add_action('wp_logout', function () {
-    wp_redirect(home_url());
-    exit;
+// Redirects lost password failed from the front
+add_action('lost_password', function () {
+    $referer = $_SERVER['HTTP_REFERER'] ?? false;
+    if ($referer && parse_url($referer)['path'] === '/forgot-pass/') {
+        wp_redirect(home_url('/forgot-pass'));
+        exit;
+    }
 });
 
 add_action('phpmailer_init', function ($phpmailer) {

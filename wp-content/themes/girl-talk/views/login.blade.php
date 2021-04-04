@@ -8,15 +8,18 @@
         </div>
 
         <form action="{{home_url('wp-login.php')}}" class="flex flex-col space-y-10 mt-20 md:w-96 m-auto" method="POST">
-            @include('elements.input',['name'=>'log', 'placeholder'=>'Username or Email','type'=>'text', 'required'=>true])
-            @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>true])
+            @if(isset($_GET['login']))
+                <p class="text-red-700 px-5 py-2 bg-accent-light rounded">Invalid username and/or password, check and try again.</p>
+            @endif
+            @include('elements.input',['name'=>'log', 'placeholder'=>'Username or Email','type'=>'text', 'required'=>'' ])
+            @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>'' ])
             @include('elements.checkbox',['name'=>'rememberme','label'=>'Remember Me'])
             <input type="hidden" name="redirect_to" value="{{home_url('my-account')}}">
-            <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-gray-100 ">Sign in
+            <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-white">Sign in
             </button>
         </form>
 
-        <p class=" mt-10 text-center">Forgot your <a href="/forgot-pass"
+        <p class=" mt-10 text-center">Forgot your <a href="{{get_home_url(null,'forgot-pass')}}"
                                                      class="text-accent underline">password</a>?</p>
     </section>
 @endsection
