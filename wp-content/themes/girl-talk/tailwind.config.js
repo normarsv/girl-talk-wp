@@ -25,14 +25,20 @@ module.exports = {
             },
             boxShadow: {
                 accent: '8px 8px 20px #F9BDC6',
+                'accent-input': '4px 4px 20px #F9BDC6'
+            },
+            maxWidth: {
+                '900': '900px',
+                '650': '650px',
+                '460': '460px',
+                '160': '160px',
             },
         },
         minWidth: {
             '400': '400px',
         },
-        maxWidth: {
-            '650': '650px',
-            '210': '210px',
+        maxHeight: {
+            '50': '50px',
         }
     },
     variants: {

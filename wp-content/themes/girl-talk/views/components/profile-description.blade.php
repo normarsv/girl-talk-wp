@@ -1,8 +1,8 @@
-<section class="container py-16 md:py-16 xl:px-28 md:pb-32">
+<section class="container pt-12 pb-20 xl:px-28 md:pb-32">
     @include('elements.section-title',['text'=>$title])
 
     <div class="flex flex-col md:flex-row items-center justify-start mt-10">
-        <div class="text-2xl max-w-650">
+        <div class="text-xl max-w-650">
             {!! $body !!}
         </div>
         <div class="w-60 mt-14 md:w-full lg:w-60 md:ml-20 lg:ml-40 md:-mt-20">

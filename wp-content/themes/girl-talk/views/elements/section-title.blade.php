@@ -1,1 +1,1 @@
-<h2 class="font-title text-6xl md:text-8xl text-center">{{$text}}</h2>
+<h2 class="font-title text-6xl md:text-7xl text-center">{{$text}}</h2>

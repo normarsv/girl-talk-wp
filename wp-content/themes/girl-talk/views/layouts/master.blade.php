@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="{{ bloginfo('charset') }}">
+    <meta charset="@php bloginfo('charset') @endphp">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title><?php bloginfo('name'); ?> | <?php is_front_page() ? bloginfo('description') : wp_title(''); ?></title>
 
@@ -9,7 +9,7 @@
 
     @php wp_head() @endphp
 
-     @include('partials.favicon')
+    @include('partials.favicon')
 </head>
 <body @php body_class(get_field('background_color') == 'pink' ? 'bg-accent-light':'bg-white') @endphp>
 

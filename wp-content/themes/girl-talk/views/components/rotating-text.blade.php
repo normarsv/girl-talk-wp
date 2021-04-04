@@ -1,6 +1,6 @@
 <section class="w-full overflow-hidden">
     <div class="py-8 flex flex-row animate-scroll-infinite">
-        <div class="flex flex-row font-bold text-2xl whitespace-nowrap">
+        <div class="flex flex-row font-bold text-xl whitespace-nowrap">
             @set($i=0)
             @while($i<=9)
                 @set($i)
