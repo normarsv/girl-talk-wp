@@ -4,7 +4,7 @@
             @set($i=0)
             @while($i<=9)
                 @set($i)
-                <p class="px-2 {{$i % 2 ? '': 'text-accent'}}" aria-hidden="true">Girl Talk User Testimonials</p>
+                <p class="px-2 {{$i % 2 ? '': 'text-accent'}}" aria-hidden="true">{{$text}}</p>
             @endwhile
         </div>
     </div>
