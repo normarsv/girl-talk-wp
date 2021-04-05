@@ -38,7 +38,7 @@ function gt_create_user($username, $password, $email)
     $url = get_site_url() . '?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
     $html = 'Please validate your account <br/><br/> <a href="' . $url . '">' . $url . '</a>';
 
-//    wp_mail($email, 'GT verify your account', $html);
+    wp_mail($email, 'GT verify your account', $html);
 }
 
 function gt_redirect_verified_users()
