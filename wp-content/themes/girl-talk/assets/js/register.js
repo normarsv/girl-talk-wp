@@ -1,3 +1,5 @@
+import { isPasswordFormatValid, isEmailValid } from './shared/helpers'
+
 export default function () {
     const $form = $('#register-form'),
         $username = $form.find('#username'),
@@ -10,7 +12,7 @@ export default function () {
     $form.on('submit', (e) => {
         e.preventDefault()
 
-        if (!emailIsValid($email.val())) {
+        if (!isEmailValid($email.val())) {
             $email.find('+ .input-error').removeClass('hidden').text('Invalid email')
             return
         }
@@ -20,8 +22,8 @@ export default function () {
             return
         }
 
-        if (!passwordIsValid($password.val())) {
-            $password.find('+ .input-error').removeClass('hidden').text('Required minimum 6 characters, at least one letter and one number')
+        if (!isPasswordFormatValid($password.val())) {
+            $password.find('+ .input-error').removeClass('hidden').text('Required minimum 8 characters, at least one letter, one number and one special char')
             return
         }
 
@@ -68,13 +70,4 @@ export default function () {
             }
         });
     })
-}
-
-function emailIsValid(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
-
-function passwordIsValid(pass) {
-    //Minimum eight characters, at least one letter and one number:
-    return /^.{6,50}$/.test(pass)
 }

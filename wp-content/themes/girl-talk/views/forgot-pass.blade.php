@@ -11,6 +11,9 @@
             @if(isset($_GET['recovery']))
                 <p class="text-green-700 px-5 py-2 text-center bg-accent-light rounded">Check your email for the recovery link.</p>
             @endif
+            @if(isset($_GET['fail']))
+                <p class="text-red-700 px-5 py-2 text-center bg-accent-light rounded">User doesn't exist.</p>
+            @endif
             @include('elements.input',['name'=>'user_login', 'placeholder'=>'Username or Email', 'type'=>'text', 'required'=>true])
             <button type="submit" class="bg-accent px-4 py-2 rounded-lg font-semibold text-white">Send</button>
         </form>

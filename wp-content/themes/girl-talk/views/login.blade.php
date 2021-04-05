@@ -9,7 +9,17 @@
 
         <form action="{{home_url('wp-login.php')}}" class="flex flex-col space-y-10 mt-20 md:w-96 m-auto" method="POST">
             @if(isset($_GET['login']))
-                <p class="text-red-700 px-5 py-2 bg-accent-light rounded">Invalid username and/or password, check and try again.</p>
+                <p class="text-red-700 px-5 py-2 bg-accent-light rounded">Invalid username and/or password, check and
+                    try again.</p>
+            @endif
+            @if(isset($_GET['forgot-pass']) && $_GET['forgot-pass'] == 'expiredkey')
+                <p class="text-red-700 px-5 py-2 bg-accent-light rounded">The reset key is expired, try again.</p>
+            @endif
+            @if(isset($_GET['forgot-pass']) && $_GET['forgot-pass'] == 'invalidkey')
+                <p class="text-red-700 px-5 py-2 bg-accent-light rounded">Invalid reset key, try again.</p>
+            @endif
+            @if(isset($_GET['password']) && $_GET['password'] == 'changed')
+                <p class="text-green-700 px-5 py-2 bg-accent-light rounded">Password updated.</p>
             @endif
             @include('elements.input',['name'=>'log', 'placeholder'=>'Username or Email','type'=>'text', 'required'=>'' ])
             @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>'' ])

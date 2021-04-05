@@ -78,7 +78,7 @@ add_filter('login_redirect', function ($redirect_to, $requested_redirect_to, $us
 add_action('wp_login_failed', function () {
     $referer = $_SERVER['HTTP_REFERER'] ?? false;
     if ($referer && parse_url($referer)['path'] === '/login/') {
-        wp_redirect(home_url('/login') . '?login=failed');
+        wp_redirect(home_url('login') . '?login=failed');
         exit;
     }
 });
@@ -87,8 +87,8 @@ add_action('wp_login_failed', function () {
 add_filter('authenticate', function ($user, $username, $password) {
     $referer = $_SERVER['HTTP_REFERER'] ?? false;
     if ($referer && parse_url($referer)['path'] === '/login/' &&
-        ($username == "" || $password == "")) {
-        wp_redirect(home_url('/login') . "?login=empty");
+        ($username == '' || $password == '')) {
+        wp_redirect(home_url('login') . '?login=empty');
         exit;
     }
 }, 1, 3);
@@ -97,10 +97,55 @@ add_filter('authenticate', function ($user, $username, $password) {
 add_action('lost_password', function () {
     $referer = $_SERVER['HTTP_REFERER'] ?? false;
     if ($referer && parse_url($referer)['path'] === '/forgot-pass/') {
-        wp_redirect(home_url('/forgot-pass'));
+        wp_redirect(home_url('forgot-pass') . '?fail=doesntexist');
         exit;
     }
 });
+
+// Customize forgot pass mail for non admin users
+add_filter('retrieve_password_message', function ($message, $key, $user_login, $user_data) {
+    if (user_can($user_data->ID, 'administrator')) {
+        return $message;
+    }
+
+    $msg = 'Hello! <br><br>';
+    $msg .= sprintf('You asked us to reset your password for your account using the email address %s.', $user_login) . '<br><br>';
+    $msg .= 'To reset your password, visit the following address: <br><br>';
+    $msg .= site_url("forgot-pass?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
+
+    return $msg;
+}, 10, 4);
+
+add_action('login_form_rp', 'do_password_reset');
+add_action('login_form_resetpass', 'do_password_reset');
+
+function do_password_reset()
+{
+    if ('POST' == $_SERVER['REQUEST_METHOD']) {
+        $rp_key = $_REQUEST['rp_key'];
+        $rp_login = $_REQUEST['rp_login'];
+
+        $user = check_password_reset_key($rp_key, $rp_login);
+
+        if (!$user || is_wp_error($user)) {
+            if ($user && $user->get_error_code() === 'expired_key') {
+                wp_redirect(home_url('login?forgot-pass=expiredkey'));
+            } else {
+                wp_redirect(home_url('login?forgot-pass=invalidkey'));
+            }
+            exit;
+        }
+
+        // All the validations occur are in JS
+        if (isset($_POST['pass'])) {
+            reset_password($user, $_POST['pass']);
+            wp_redirect(home_url('login?password=changed'));
+        } else {
+            echo "Invalid request.";
+        }
+        exit;
+    }
+}
 
 add_action('phpmailer_init', function ($phpmailer) {
     $phpmailer->isSMTP();

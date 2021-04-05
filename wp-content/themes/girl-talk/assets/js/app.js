@@ -1,6 +1,7 @@
 import navigation from "./navigation";
 import newsletter from "./newsletter";
 import register from "./register";
+import forgotPass from "./forgot-pass";
 import profileCompletion from "./profile-completion";
 
 function init() {
@@ -8,7 +9,8 @@ function init() {
         navigation,
         newsletter,
         register,
-        profileCompletion
+        profileCompletion,
+        forgotPass
     ];
 
     components.forEach(component => {
