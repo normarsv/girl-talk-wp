@@ -40,6 +40,9 @@ module.exports = {
         },
         maxHeight: {
             '50': '50px',
+        },
+        textShadow: {
+            'default': '8px 8px 50px #EA6075',
         }
     },
     variants: {
@@ -52,5 +55,6 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/typography'),
+        require('tailwindcss-textshadow')
     ],
 };

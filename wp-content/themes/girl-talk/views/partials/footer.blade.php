@@ -26,7 +26,7 @@
                 <form action="{{ admin_url( 'admin-ajax.php' ) }}" method="POST" id="newsletter-form">
                     <div class="relative rounded-sm shadow-lg">
                         <input type="email" name="email" id="email_newsletter"
-                               class="block border-0 w-full pl-3 pr-12 sm:text-sm rounded-sm placeholder-gray-400"
+                               class="bg-accent-light block border-0 w-full pl-3 pr-12 sm:text-sm rounded placeholder-gray-400"
                                placeholder="Your email" aria-label="Your email" required>
                         <button type="submit" class="absolute inset-y-0 right-3 flex items-center" aria-label="Subscribe me">
                             <svg width="12" height="15" viewBox="0 0 16 28" fill="none"
