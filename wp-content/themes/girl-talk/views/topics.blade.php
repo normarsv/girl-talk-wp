@@ -20,7 +20,7 @@
                     <h2 class="text-5xl text-accent-light text-center font-title text-shadow absolute bottom-3 left-1/2 transform -translate-x-1/2">{{ $term->name }}</h2>
                 </a>
             @endforeach
-            <div class="w-52 relative m-auto">
+            <div class="w-52 relative m-auto bg-white">
                 <div class="aspect-w-8 aspect-h-10 rounded shadow-lg shadow-accent"></div>
                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-3 text-center">
                     <p class="font-semibold">Have an idea for a topic we should add?</p>
