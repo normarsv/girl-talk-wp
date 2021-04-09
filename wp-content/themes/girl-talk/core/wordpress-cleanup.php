@@ -84,8 +84,8 @@ function login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_template_directory_uri()?>/assets/images/cms-logo.png);
-            width: 320px;
-            height: 120px;
+            width: 220px;
+            height: 70px;
             background-size: contain;
             background-repeat: no-repeat;
         }
