@@ -3,6 +3,8 @@ import newsletter from "./newsletter";
 import register from "./register";
 import forgotPass from "./forgot-pass";
 import profileCompletion from "./profile-completion";
+import askQuestion from "./ask-question";
+import answerQuestion from "./answer-question";
 
 function init() {
     const components = [
@@ -10,7 +12,9 @@ function init() {
         newsletter,
         register,
         profileCompletion,
-        forgotPass
+        forgotPass,
+        askQuestion,
+        answerQuestion
     ];
 
     components.forEach(component => {

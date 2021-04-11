@@ -8,20 +8,20 @@ function newsletter_submit()
     $email = $_POST['email'];
     if (($email && $email != '') && class_exists('Flamingo_Inbound_Message')) {
         Flamingo_Inbound_Message::add([
-            'channel' => '',
-            'status' => '',
-            'subject' => 'New newsletter user <' . $email . '>',
-            'from' => $email,
-            'from_name' => $email,
-            'from_email' => '',
-            'fields' => [],
-            'meta' => [],
-            'akismet' => [],
-            'recaptcha' => [],
-            'spam' => false,
-            'spam_log' => [],
-            'consent' => [],
-            'timestamp' => null,
+            'channel'          => '',
+            'status'           => '',
+            'subject'          => 'New newsletter user <' . $email . '>',
+            'from'             => $email,
+            'from_name'        => $email,
+            'from_email'       => '',
+            'fields'           => [],
+            'meta'             => [],
+            'akismet'          => [],
+            'recaptcha'        => [],
+            'spam'             => false,
+            'spam_log'         => [],
+            'consent'          => [],
+            'timestamp'        => null,
             'posted_data_hash' => null,
         ]);
     }
@@ -76,6 +76,50 @@ function profile_completion()
 
     update_user_meta($user_id, 'account_verified', true);
     delete_user_meta($user_id, 'verify_token');
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_create_question', 'create_question');
+add_action('wp_ajax_create_question', 'create_question');
+
+function create_question()
+{
+    $title = sanitize_text_field($_POST['title']);
+    $body = sanitize_text_field($_POST['body']);
+    $tax = sanitize_text_field($_POST['tax']);
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    $post_args = ['post_title' => $title, 'post_content' => $body, 'post_type' => 'question', 'post_status' => 'publish'];
+    $post_id = wp_insert_post($post_args);
+    wp_set_object_terms($post_id, $tax, 'topics');
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_answer_question', 'answer_question');
+add_action('wp_ajax_answer_question', 'answer_question');
+
+function answer_question()
+{
+    $body = sanitize_text_field($_POST['body']);
+    $post_id = $_POST['post_id'];
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    $post_args = [
+        'comment_content' => $body,
+        'comment_post_ID' => $post_id,
+        'user_id'         => get_current_user_id(),
+    ];
+    wp_insert_comment($post_args);
 
     echo wp_json_encode(['status' => true]);
     wp_die();

@@ -31,7 +31,7 @@
                 </div>
                 <div class="font-semibold text-xl leading-6 pl-14 max-w-4xl">
                     <button type="button"
-                            class="shadow-accent rounded-lg py-2 px-4 text-lg w-72 text-left relative border border-accent leading-6">
+                            class="open-question-modal shadow-accent rounded-lg py-2 px-4 text-lg w-72 text-left relative border border-accent leading-6">
                         Ask a question
                         <img src="@asset('images/arrow_black.png')"
                              class="w-3 h-5 inline absolute right-3 top-1/2 transform -translate-y-1/2" alt="">
@@ -56,4 +56,5 @@
             @endwhile
         </div>
     </section>
+    @include('partials.question-modal',['topic'=>$term->slug])
 @endsection

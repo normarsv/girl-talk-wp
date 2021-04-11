@@ -4,18 +4,18 @@
  * Disable comments column
  * https://wordpress.stackexchange.com/questions/232802/remove-comment-column-in-all-post-types
  */
-function disable_comments()
-{
-    $post_types = get_post_types();
-    foreach ($post_types as $post_type) {
-        if (post_type_supports($post_type, 'comments')) {
-            remove_post_type_support($post_type, 'comments');
-            remove_post_type_support($post_type, 'trackbacks');
-        }
-    }
-}
-
-add_action('admin_init', 'disable_comments');
+//function disable_comments()
+//{
+//    $post_types = get_post_types();
+//    foreach ($post_types as $post_type) {
+//        if (post_type_supports($post_type, 'comments')) {
+//            remove_post_type_support($post_type, 'comments');
+//            remove_post_type_support($post_type, 'trackbacks');
+//        }
+//    }
+//}
+//
+//add_action('admin_init', 'disable_comments');
 
 
 /**
@@ -97,7 +97,6 @@ add_action('login_enqueue_scripts', 'login_logo');
 //Disable Edit Default Posts & Comments
 add_action('admin_menu', function () {
     remove_menu_page('edit.php');
-    remove_menu_page('edit-comments.php');
 });
 
 //Disable ld-json schema from the seo framework
