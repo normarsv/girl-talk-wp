@@ -5,6 +5,7 @@ import forgotPass from "./forgot-pass";
 import profileCompletion from "./profile-completion";
 import askQuestion from "./ask-question";
 import answerQuestion from "./answer-question";
+import myAccount from "./my-account";
 
 function init() {
     const components = [
@@ -14,7 +15,8 @@ function init() {
         profileCompletion,
         forgotPass,
         askQuestion,
-        answerQuestion
+        answerQuestion,
+        myAccount
     ];
 
     components.forEach(component => {
