@@ -1,6 +1,7 @@
 module.exports = {
     purge: [
         './views/**/*.blade.php',
+        './assets/js/**/*.js',
     ],
     darkMode: false,
     theme: {
