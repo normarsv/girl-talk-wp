@@ -35,10 +35,16 @@
                     <div id="questions-group" class="panel-group space-y-8">
                         @php $questionsQuery = ['author' =>  $user->ID, 'orderby' => 'post_date', 'post_type' => 'question'] @endphp
                         @foreach(get_posts($questionsQuery) as $question)
+                            @php $term = get_the_terms($question->ID, 'topics')[0] @endphp
                             <div class="bg-white shadow-accent px-8 py-6 rounded-3xl flex flex-col">
-                                <p><img class="w-8 inline"
-                                        src="@asset('images/'.get_the_author_meta('gt_icon',$question->post_author).'.png')}}"
-                                        alt="">{{$user->data->user_login}}</p>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <img class="w-8 inline"
+                                              src="@asset('images/'.get_the_author_meta('gt_icon',$question->post_author).'.png')}}"
+                                              alt="">{{$user->data->user_login}}
+                                    </div>
+                                    <div class="text-sm font-semibold"> {{$term->name}}</div>
+                                </div>
                                 <p>{{get_the_date('m/d/y', $question->ID)}}</p>
                                 <a href="{{get_permalink($question->ID)}}" target="_blank"
                                    class="text-lg mt-1 font-semibold hover:underline leading-6">{{mb_strimwidth($question->post_title,0,100,'...')}}</a>
@@ -50,10 +56,16 @@
                     <div id="answers-group" class="panel-group hidden space-y-8">
                         @php $answersQuery = ['user_id' =>  $user->ID, 'post_type' => 'question'] @endphp
                         @foreach(get_comments($answersQuery) as $answer)
+                            @php $term = get_the_terms($answer->comment_post_ID, 'topics')[0] @endphp
                             <div class="bg-white shadow-accent px-8 py-6 rounded-3xl flex flex-col">
-                                <p><img class="w-8 inline"
-                                        src="@asset('images/'.get_the_author_meta('gt_icon',$answer->post_author).'.png')}}"
-                                        alt="">{{$user->data->user_login}}</p>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <img class="w-8 inline"
+                                             src="@asset('images/'.get_the_author_meta('gt_icon',$answer->post_author).'.png')}}"
+                                             alt="">{{$user->data->user_login}}
+                                    </div>
+                                    <div class="text-sm font-semibold"> {{$term->name}}</div>
+                                </div>
                                 <p>{{get_comment_date('m/d/y', $answer->comment_ID)}}</p>
                                 <a href="{{get_permalink($answer->comment_post_ID)}}" target="_blank"
                                    class="mt-3 hover:underline">{!! mb_strimwidth($answer->comment_content, 0, 300, '...') !!}</a>
