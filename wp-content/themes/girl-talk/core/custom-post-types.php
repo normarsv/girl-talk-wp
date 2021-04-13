@@ -10,7 +10,7 @@ function custom_post_type_setup()
             'singular_label'     => 'Question',
             'plural_label'       => 'Questions',
             'has_archive'        => true,
-            'rewrite'            => ['slug' => 'quiestion'],
+            'rewrite'            => ['slug' => 'question'],
             'menu_icon'          => 'dashicons-format-quote',
             'taxonomies'         => ['topics']
         ],
@@ -92,12 +92,24 @@ function custom_taxonomies_setup()
     ];
 
     register_taxonomy('topics', ['question'], [
-        'hierarchical'          => false,
-        'labels'                => $labels,
-        'show_ui'               => true,
-        'show_admin_column'     => false,
-        'query_var'             => true,
-        'rewrite'               => ['slug' => 'topic'],
+        'hierarchical'      => false,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => false,
+        'query_var'         => true,
+        'rewrite'           => ['slug' => 'topic'],
+    ]);
+}
+
+function custom_post_status()
+{
+    register_post_status('flagged', [
+        'label'                     => _x('Flagged', 'post'),
+        'public'                    => true,
+        'exclude_from_search'       => false,
+        'show_in_admin_all_list'    => true,
+        'show_in_admin_status_list' => true,
+        'label_count'               => _n_noop('Flagged <span class="count">(%s)</span>', 'Flagged <span class="count">(%s)</span>'),
     ]);
 }
 
@@ -105,6 +117,31 @@ function create_post_type()
 {
     custom_post_type_setup();
     custom_taxonomies_setup();
+    custom_post_status();
 }
 
 add_action('init', 'create_post_type');
+
+// Display Custom Post Status Option in Post Edit
+add_action('admin_footer-post.php', function () {
+    global $post;
+    $complete = '';
+    $label = '';
+
+    if ($post->post_type == 'question') {
+        if ($post->post_status == 'flagged') {
+            $complete = 'selected="selected"';
+            $label = 'Flagged';
+        }
+        echo "<script>
+            jQuery(document).ready( function() {
+                jQuery( 'select#post_status' ).append( '<option value=\"flagged\" " . $complete . ">Flagged</option>' );
+                ";
+        if ($label !== '') {
+            echo "jQuery( '#post-status-display' ).append( '$label' )";
+        }
+        echo "   
+            });
+            </script>";
+    }
+});

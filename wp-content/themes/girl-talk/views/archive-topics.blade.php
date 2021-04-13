@@ -4,7 +4,9 @@
     @php
         $term = get_queried_object();
         $termImage = get_field('featured_image','term_' . $term->term_id);
-        $args = ['post_type' => 'question',
+        $args = [
+            'post_type' => 'question',
+            'post_status'=>['publish','pending'],
             'tax_query' => [
                 [
                     'taxonomy' => 'topics',
