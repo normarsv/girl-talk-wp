@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @set($user = wp_get_current_user())
+@set($thisthat = get_user_meta($user->ID, 'gt_thisthat',true))
 
 @section('content')
     <section class="container max-w-none xl:max-w-6xl pt-16 pb-28">
@@ -12,7 +13,43 @@
                 <a href="#" class="text-lg underline mt-3">Edit email</a>
                 <a class="bg-accent px-4 py-2 rounded-md mt-6 font-semibold text-white" href="{{wp_logout_url()}}">Logout</a>
             </div>
-            <div class="flex flex-col w-1/2">
+            <div class="flex flex-col w-1/2 text-center space-y-6">
+                <div class="flex justify-between items-center space-x-1">
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['place']=='beach'?'radio-button-active':''}}">
+                        Beach
+                    </div>
+                    <span class="flex-1 text-sm">or</span>
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['place']=='mountain'?'radio-button-active':''}}">
+                        Mountain
+                    </div>
+                </div>
+                <div class="flex justify-between items-center space-x-1">
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['taste']=='sweet'?'radio-button-active':''}}">
+                        Sweet
+                    </div>
+                    <span class="flex-1 text-sm">or</span>
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['taste']=='salty'?'radio-button-active':''}}">
+                        Salty
+                    </div>
+                </div>
+                <div class="flex justify-between items-center space-x-1">
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['animal']=='early_bird'?'radio-button-active':''}}">
+                        Early Bird
+                    </div>
+                    <span class="flex-1 text-sm">or</span>
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['animal']=='night_owl'?'radio-button-active':''}}">
+                        Night Owl
+                    </div>
+                </div>
+                <div class="flex justify-between items-center space-x-1">
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['genre']=='romance'?'radio-button-active':''}}">
+                        Romance
+                    </div>
+                    <span class="flex-1 text-sm">or</span>
+                    <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['genre']=='thriller'?'radio-button-active':''}}">
+                        Thriller
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mt-20">
@@ -40,8 +77,8 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <img class="w-8 inline"
-                                              src="@asset('images/'.get_the_author_meta('gt_icon',$question->post_author).'.png')}}"
-                                              alt="">{{$user->data->user_login}}
+                                             src="@asset('images/'.get_the_author_meta('gt_icon',$question->post_author).'.png')}}"
+                                             alt="">{{$user->data->user_login}}
                                     </div>
                                     <div class="text-sm font-semibold"> {{$term->name}}</div>
                                 </div>
