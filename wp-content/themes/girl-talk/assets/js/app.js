@@ -6,6 +6,7 @@ import profileCompletion from "./profile-completion";
 import askQuestion from "./ask-question";
 import answerQuestion from "./answer-question";
 import myAccount from "./my-account";
+import deleteQuestionAnswer from "./delete-question-answer";
 
 function init() {
     const components = [
@@ -16,7 +17,8 @@ function init() {
         forgotPass,
         askQuestion,
         answerQuestion,
-        myAccount
+        myAccount,
+        deleteQuestionAnswer
     ];
 
     components.forEach(component => {

@@ -124,3 +124,37 @@ function answer_question()
     echo wp_json_encode(['status' => true]);
     wp_die();
 }
+
+add_action('wp_ajax_nopriv_delete_question', 'delete_question');
+add_action('wp_ajax_delete_question', 'delete_question');
+
+function delete_question()
+{
+    $post_id = $_POST['question_id'];
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    wp_trash_post($post_id);
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_delete_question', 'delete_answer');
+add_action('wp_ajax_delete_answer', 'delete_answer');
+
+function delete_answer()
+{
+    $comment_id = $_POST['answer_id'];
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    wp_delete_comment($comment_id);
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}

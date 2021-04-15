@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @set($post = get_queried_object())
 @set($term = get_the_terms($post->ID, 'topics')[0])
+@set($user_id = get_current_user_id())
 @section('content')
     <section class="container max-w-none xl:max-w-6xl pt-12 pb-36">
         <div class="text-center">
@@ -20,7 +21,7 @@
                     <p class="text-lg mt-1 font-semibold leading-6">{{ $post->post_title }}</p>
                     <p class="text-lg mt-3">{!! $post->post_content !!}</p>
                 </div>
-                <div class="text-right mt-2 space-x-3">
+                <div class="text-right mt-2 space-x-4 flex flex-row justify-end items-center">
                     <button type="button" aria-label="answer question" class="open-answer-modal"
                             title="Answer Question">
                         <img src="@asset('images/answer.png')" class="w-6 h-6" alt="">
@@ -28,6 +29,14 @@
                     <button type="button" aria-label="answer question" class="" title="Flag">
                         <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
                     </button>
+                    @if((int)$post->post_author === (int)$user_id)
+                        <button type="button" aria-label="delete question"
+                                class="delete-question italic hover:underline"
+                                title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                data-question-id="{{$post->ID}}">
+                            Delete
+                        </button>
+                    @endif
                 </div>
             </div>
             <div class="pl-10 mt-10 space-y-10">
@@ -38,6 +47,16 @@
                                 alt="">{{get_userdata($comment->user_id)->data->display_name}}</p>
                         <p>{{get_comment_date('m/d/y', $comment->comment_ID)}}</p>
                         <p class="text-lg mt-3">{{$comment->comment_content}}</p>
+                        @if((int)$comment->user_id=== (int)$user_id)
+                            <div class="text-right mt-2 space-x-3">
+                                <button type="button" aria-label="delete answer"
+                                        class="delete-answer italic hover:underline"
+                                        title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                        data-answer-id="{{$comment->comment_ID}}">
+                                    Delete
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

@@ -87,6 +87,14 @@
                                    class="text-lg mt-1 font-semibold hover:underline leading-6">{{mb_strimwidth($question->post_title,0,100,'...')}}</a>
                                 <a href="{{get_permalink($question->ID)}}" target="_blank"
                                    class="mt-3 hover:underline">{!! mb_strimwidth($question->post_content, 0, 300, '...') !!}</a>
+                                <div class="text-right mt-2 space-x-3">
+                                    <button type="button" aria-label="delete question"
+                                            class="delete-question italic hover:underline"
+                                            title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                            data-question-id="{{$question->ID}}">
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -106,6 +114,14 @@
                                 <p>{{get_comment_date('m/d/y', $answer->comment_ID)}}</p>
                                 <a href="{{get_permalink($answer->comment_post_ID)}}" target="_blank"
                                    class="mt-3 hover:underline">{!! mb_strimwidth($answer->comment_content, 0, 300, '...') !!}</a>
+                                <div class="text-right mt-2 space-x-3">
+                                    <button type="button" aria-label="delete answer"
+                                            class="delete-answer italic hover:underline"
+                                            title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                            data-answer-id="{{$answer->comment_ID}}">
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         @endforeach
                     </div>
