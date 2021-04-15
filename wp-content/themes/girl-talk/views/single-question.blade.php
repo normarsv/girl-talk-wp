@@ -26,9 +26,12 @@
                             title="Answer Question">
                         <img src="@asset('images/answer.png')" class="w-6 h-6" alt="">
                     </button>
-                    <button type="button" aria-label="answer question" class="" title="Flag">
-                        <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
-                    </button>
+                    @if(get_post_status($post->ID) !== 'flagged')
+                        <button type="button" aria-label="answer question" class="flag-question-trigger" title="Flag Question"
+                                data-question-id="{{$post->ID}}" data-url="{{admin_url('admin-ajax.php')}}">
+                            <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
+                        </button>
+                    @endif
                     @if((int)$post->post_author === (int)$user_id)
                         <button type="button" aria-label="delete question"
                                 class="delete-question italic hover:underline"

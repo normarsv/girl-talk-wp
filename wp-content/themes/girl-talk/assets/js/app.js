@@ -8,6 +8,7 @@ import answerQuestion from "./answer-question";
 import myAccount from "./my-account";
 import deleteQuestionAnswer from "./delete-question-answer";
 import editEmail from "./edit-email";
+import flagQuestion from "./flag-question";
 
 function init() {
     const components = [
@@ -20,7 +21,8 @@ function init() {
         answerQuestion,
         myAccount,
         deleteQuestionAnswer,
-        editEmail
+        editEmail,
+        flagQuestion
     ];
 
     components.forEach(component => {

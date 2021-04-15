@@ -180,3 +180,20 @@ function update_email()
     echo wp_json_encode(['status' => true]);
     wp_die();
 }
+
+add_action('wp_ajax_nopriv_flag_question', 'flag_question');
+add_action('wp_ajax_flag_question', 'flag_question');
+
+function flag_question()
+{
+    $question_id = $_POST['question_id'];
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    wp_update_post(['ID' => $question_id, 'post_status' => 'flagged']);
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}

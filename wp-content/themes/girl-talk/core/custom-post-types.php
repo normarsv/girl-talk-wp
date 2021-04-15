@@ -145,3 +145,13 @@ add_action('admin_footer-post.php', function () {
             </script>";
     }
 });
+
+// Display custom post status in post list view
+add_filter('display_post_states', function ($states) {
+    global $post;
+    $arg = get_query_var('post_status');
+    if ($arg != 'flagged' && $post->post_status == 'flagged') {
+        return ['Flagged'];
+    }
+    return $states;
+});
