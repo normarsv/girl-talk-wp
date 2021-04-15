@@ -7,6 +7,7 @@ import askQuestion from "./ask-question";
 import answerQuestion from "./answer-question";
 import myAccount from "./my-account";
 import deleteQuestionAnswer from "./delete-question-answer";
+import editEmail from "./edit-email";
 
 function init() {
     const components = [
@@ -18,7 +19,8 @@ function init() {
         askQuestion,
         answerQuestion,
         myAccount,
-        deleteQuestionAnswer
+        deleteQuestionAnswer,
+        editEmail
     ];
 
     components.forEach(component => {

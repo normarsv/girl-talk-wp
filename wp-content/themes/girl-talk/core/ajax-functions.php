@@ -142,7 +142,7 @@ function delete_question()
     wp_die();
 }
 
-add_action('wp_ajax_nopriv_delete_question', 'delete_answer');
+add_action('wp_ajax_nopriv_delete_answer', 'delete_answer');
 add_action('wp_ajax_delete_answer', 'delete_answer');
 
 function delete_answer()
@@ -154,6 +154,28 @@ function delete_answer()
     }
 
     wp_delete_comment($comment_id);
+
+    echo wp_json_encode(['status' => true]);
+    wp_die();
+}
+
+add_action('wp_ajax_nopriv_update_email', 'update_email');
+add_action('wp_ajax_update_email', 'update_email');
+
+function update_email()
+{
+    $email = strtolower(sanitize_email($_POST['email']));
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    if (email_exists($email)) {
+        echo wp_json_encode(['status' => false, 'email_exists' => true]);
+        wp_die();
+    }
+
+    wp_update_user(['ID' => get_current_user_id(), 'user_email' => $email]);
 
     echo wp_json_encode(['status' => true]);
     wp_die();

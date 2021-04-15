@@ -10,7 +10,7 @@
                     <img class="w-11 inline" src="@asset('images/'.get_user_meta($user->ID, 'gt_icon', true).'.png')"
                          alt="" aria-hidden="true">{{$user->data->user_login}}</p>
                 <p class="text-lg">{{$user->data->user_email}}</p>
-                <a href="#" class="text-lg underline mt-3">Edit email</a>
+                <button type="button" class="email-update-modal-trigger text-lg underline mt-3">Edit email</button>
                 <a class="bg-accent px-4 py-2 rounded-md mt-6 font-semibold text-white" href="{{wp_logout_url()}}">Logout</a>
             </div>
             <div class="flex flex-col w-1/2 text-center space-y-6">
@@ -130,4 +130,5 @@
 
         </div>
     </section>
+    @include('partials.edit-email-modal')
 @endsection
