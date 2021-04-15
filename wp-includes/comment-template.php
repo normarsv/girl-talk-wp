@@ -2292,7 +2292,7 @@ function wp_list_comments( $args = array(), $comments = null ) {
  *                                        Default 'Your email address will not be published.'.
  *     @type string $comment_notes_after  HTML element for a message displayed after the textarea field.
  *     @type string $action               The comment form element action attribute. Default '/wp-comments-post.php'.
- *     @type string $id_form              The comment form element id attribute. Default ''.
+ *     @type string $id_form              The comment form element id attribute. Default 'commentform'.
  *     @type string $id_submit            The comment submit element id attribute. Default 'submit'.
  *     @type string $class_container      The comment form container class attribute. Default 'comment-respond'.
  *     @type string $class_form           The comment form element class attribute. Default 'comment-form'.
@@ -2468,7 +2468,7 @@ function comment_form( $args = array(), $post_id = null ) {
 		),
 		'comment_notes_after'  => '',
 		'action'               => site_url( '/wp-comments-post.php' ),
-		'id_form'              => '',
+		'id_form'              => 'commentform',
 		'id_submit'            => 'submit',
 		'class_container'      => 'comment-respond',
 		'class_form'           => 'comment-form',

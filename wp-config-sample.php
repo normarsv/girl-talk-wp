@@ -37,13 +37,6 @@ define( 'DB_CHARSET', 'utf8' );
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
-//SMTP
-define( 'SMTP_USERNAME', '' );
-define( 'SMTP_PASSWORD', '' );
-define( 'SMTP_HOST', '' );
-define( 'SMTP_PORT', '' );
-define( 'SMTP_SECURE', '' );
-
 /**#@+
  * Authentication Unique Keys and Salts.
  *
