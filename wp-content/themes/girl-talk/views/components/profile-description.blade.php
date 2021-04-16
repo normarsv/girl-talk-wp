@@ -2,7 +2,7 @@
     @include('elements.section-title',['text'=>$title])
 
     <div class="flex flex-col md:flex-row items-center justify-start mt-10">
-        <div class="text-xl max-w-600">
+        <div class="text-lg max-w-600">
             {!! $body !!}
         </div>
         <div class="w-60 mt-14 md:w-full lg:w-64 md:ml-10 lg:ml-20 xl:ml-40 md:mt-0">

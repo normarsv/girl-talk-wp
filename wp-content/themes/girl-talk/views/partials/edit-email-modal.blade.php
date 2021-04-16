@@ -1,13 +1,13 @@
 <div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="modal-title"
      role="dialog" aria-modal="true" id="email-update-modal">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center sm:block sm:p-0">
 
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
         <!-- This element is to trick the browser into centering the modal contents. -->
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom bg-white shadow-accent rounded text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-460 sm:w-full relative">
+        <div class="inline-block align-bottom bg-white shadow-accent rounded text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-460 w-full relative">
             <button type="button" id="gt-close-modal" class="mt-3 absolute top-0 right-3" aria-label="Close modal">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
                     <button type="submit"
                             id="email-update-submit"
                             data-url="{{admin_url('admin-ajax.php')}}"
-                            class="bg-accent mt-10 w-72 m-auto block px-4 py-2 rounded-lg font-semibold text-white disabled:opacity-40">
+                            class="bg-accent mt-10 w-full md:w-72 m-auto block px-4 py-2 rounded-lg font-semibold text-white disabled:opacity-40">
                         Submit Changes
                     </button>
                 </div>

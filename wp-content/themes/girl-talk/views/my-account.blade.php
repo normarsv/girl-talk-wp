@@ -5,7 +5,7 @@
 @section('content')
     <section class="container max-w-none xl:max-w-6xl pt-16 pb-28">
         <div class="bg-white shadow-accent p-10 rounded-3xl flex flex-col md:flex-row justify-center items-center">
-            <div class="flex flex-col w-1/2 items-center">
+            <div class="flex flex-col w-full md:w-1/2 items-center">
                 <p class="font-semibold text-2xl">
                     <img class="w-11 inline" src="@asset('images/'.get_user_meta($user->ID, 'gt_icon', true).'.png')"
                          alt="" aria-hidden="true">{{$user->data->user_login}}</p>
@@ -13,7 +13,7 @@
                 <button type="button" class="email-update-modal-trigger text-lg underline mt-3">Edit email</button>
                 <a class="bg-accent px-4 py-2 rounded-md mt-6 font-semibold text-white" href="{{wp_logout_url()}}">Logout</a>
             </div>
-            <div class="flex flex-col w-1/2 text-center space-y-6">
+            <div class="flex flex-col mt-10 md:mt-0 w-full md:w-1/2 text-center space-y-6">
                 <div class="flex justify-between items-center space-x-1">
                     <div class="bg-white shadow-accent text-accent font-semibold text-sm py-2 px-1 rounded-lg flex-1 {{$thisthat['place']=='beach'?'radio-button-active':''}}">
                         Beach
@@ -54,15 +54,15 @@
         </div>
         <div class="mt-20">
             <div id="my-activity-panel">
-                <div class="border-b border-accent px-48 pb-5">
-                    <div class="flex justify-between">
+                <div class="border-b border-accent md:px-48 pb-5">
+                    <div class="flex justify-between text-m">
                         <button type="button" data-tab-id="questions-group"
-                                class="panel-button font-semibold text-gray-400 text-accent">Your Questions
+                                class="panel-button font-semibold text-gray-400 text-accent px-2">Your Questions
                         </button>
                         <button type="button" data-tab-id="answers-group"
-                                class="panel-button font-semibold text-gray-400">Your Answers
+                                class="panel-button font-semibold text-gray-400 px-2">Your Answers
                         </button>
-                        <button type="button" id="invite-friend-modal-trigger" class="font-semibold text-accent">Invite a
+                        <button type="button" id="invite-friend-modal-trigger" class="font-semibold text-accent px-2">Invite a
                             friend
                         </button>
                     </div>

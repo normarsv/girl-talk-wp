@@ -11,7 +11,7 @@
                                  class="rounded object-cover">
                         </div>
                     </div>
-                    <div class="py-10 lg:py-0 text-center lg:text-left px-6 {{$is_image_position_right ? 'lg:pl-0 lg:pr-10' : 'lg:pl-14 lg:pr-0 pr-0 '}} lg:w-3/5">
+                    <div class="py-10 lg:py-0 text-center lg:text-left px-0 {{$is_image_position_right ? 'lg:pl-0 lg:pr-10' : 'lg:pl-14 lg:pr-0 pr-0 '}} lg:w-3/5">
                         <h2 class="font-title font-dark text-4xl xl:text-5xl">{{$card['title']}}</h2>
                         @if($card['body'])
                             <p class="font-dark text-lg leading-normal md:text-xl mt-5">

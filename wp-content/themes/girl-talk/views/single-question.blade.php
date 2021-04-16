@@ -3,7 +3,7 @@
 @set($term = get_the_terms($post->ID, 'topics')[0])
 @set($user_id = get_current_user_id())
 @section('content')
-    <section class="container max-w-none xl:max-w-6xl pt-12 pb-36">
+    <section class="container max-w-none xl:max-w-6xl pt-12 pb-36 px-6">
         <div class="text-center">
             @include('elements.section-title', ['text'=>$term->name])
             <a href="{{get_term_link($term)}}" class="text-accent hover:underline mt-8 inline-block">
