@@ -197,3 +197,24 @@ function flag_question()
     echo wp_json_encode(['status' => true]);
     wp_die();
 }
+
+add_action('wp_ajax_nopriv_invite_friend', 'invite_friend');
+add_action('wp_ajax_invite_friend', 'invite_friend');
+
+function invite_friend()
+{
+    $emails = json_decode(stripslashes($_POST['emails']));
+    $body = $_POST['body'];
+
+    if (!is_user_logged_in()) {
+        echo wp_json_encode(['status' => false]);
+        wp_die();
+    }
+
+    //TODO: Refactor this with a faster and proper solution
+    echo wp_json_encode(['status' => true]);
+    foreach ($emails as $email) {
+        wp_mail($email, 'Girl Talk Invite!', nl2br($body));
+    }
+    wp_die();
+}

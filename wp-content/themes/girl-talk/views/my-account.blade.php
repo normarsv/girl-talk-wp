@@ -62,7 +62,7 @@
                         <button type="button" data-tab-id="answers-group"
                                 class="panel-button font-semibold text-gray-400">Your Answers
                         </button>
-                        <button type="button" id="invite-friend-button" class="font-semibold text-accent">Invite a
+                        <button type="button" id="invite-friend-modal-trigger" class="font-semibold text-accent">Invite a
                             friend
                         </button>
                     </div>
@@ -131,4 +131,5 @@
         </div>
     </section>
     @include('partials.edit-email-modal')
+    @include('partials.invite-friend-modal')
 @endsection
