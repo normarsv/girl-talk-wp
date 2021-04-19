@@ -10,6 +10,7 @@ import deleteQuestionAnswer from "./delete-question-answer";
 import editEmail from "./edit-email";
 import flagQuestion from "./flag-question";
 import inviteFriend from "./invite-friend";
+import search from "./search";
 
 function init() {
     const components = [
@@ -24,7 +25,8 @@ function init() {
         deleteQuestionAnswer,
         editEmail,
         flagQuestion,
-        inviteFriend
+        inviteFriend,
+        search
     ];
 
     components.forEach(component => {

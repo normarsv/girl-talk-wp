@@ -1,4 +1,4 @@
-<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="modal-title"
+<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="invite-modal"
      role="dialog" aria-modal="true" id="invite-friend-modal">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center sm:block sm:p-0">
 
@@ -17,7 +17,7 @@
             </button>
             <div class="bg-white p-10 flex flex-row">
                 <div class="text-center w-full md:w-1/2 md:pr-10">
-                    <h3 class="text-2xl font-semibold">
+                    <h3 class="text-2xl font-semibold" id="invite-modal">
                         Invite a Friend
                     </h3>
                     <p class="mt-5">

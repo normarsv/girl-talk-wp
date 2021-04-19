@@ -27,10 +27,10 @@ add_action('admin_init', function () {
 
 // Automatically set the default girl_talk theme for the CMS
 add_action('user_register', function ($user_id) {
-    $args = array(
+    $args = [
         'ID'          => $user_id,
         'admin_color' => 'girl_talk'
-    );
+    ];
     wp_update_user($args);
 });
 
@@ -146,6 +146,26 @@ function do_password_reset()
         exit;
     }
 }
+
+// This will add a custom "LIKE" condition to search posts through multiple optional fields
+// Basically this copy the same where conditions from gt_search_posts default args but for adding manually to the where clause
+// It's weird because WORDPRESS :s
+add_filter('posts_where', function ($where, $wp_query) {
+    global $wpdb;
+    if ($search_like = $wp_query->get('search_like')) {
+        $search_like = $wpdb->esc_like($search_like);
+        $search_like = ' \'%' . $search_like . '%\'';
+        $where .= ' OR ' . $wpdb->posts . '.post_title LIKE ' . $search_like;
+        $where .= ' AND ' . $wpdb->posts . '.post_status IN ("publish", "pending", "flagged")';
+        $where .= ' AND ' . $wpdb->posts . '.post_type = "question"';
+
+        // Tag taxonomy term will work with exact same names only
+        if ($topic_id = $wp_query->get('topic_id_for_search_like')) {
+            $where .= ' AND wp_term_relationships.term_taxonomy_id IN (' . $topic_id . ')';
+        }
+    }
+    return $where;
+}, 10, 2);
 
 add_action('phpmailer_init', function ($phpmailer) {
     $phpmailer->isSMTP();

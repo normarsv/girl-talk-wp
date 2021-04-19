@@ -1,4 +1,4 @@
-<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="modal-title"
+<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="edit-email-modal"
      role="dialog" aria-modal="true" id="email-update-modal">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center sm:block sm:p-0">
 
@@ -17,7 +17,7 @@
             </button>
             <div class="bg-white px-10 py-10">
                 <div class="text-center sm:text-left">
-                    <h3 class="text-lg">
+                    <h3 class="text-lg" id="edit-email-modal">
                         Edit Email
                     </h3>
                     <p class="form-error hidden pr-4 mt-4 pt-2 text-sm text-red-500"></p>

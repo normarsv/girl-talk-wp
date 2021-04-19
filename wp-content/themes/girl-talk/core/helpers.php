@@ -60,3 +60,31 @@ function gt_redirect_non_verified_users()
         wp_safe_redirect('profile-completion');
     }
 }
+
+// Custom function for the search
+// IF YOU NEED TO CHANGE THIS SET OF ARGS, BE SURE TO UPDATE THEM ON THE `posts_where` CUSTOM FILTER AS WELL
+// INSIDE THE `theme-setup.php` file
+function gt_search_posts($search, $topic_id)
+{
+    // Tag taxonomy term will work with exact same names only
+    $search = sanitize_text_field($search);
+    $args = [
+        'posts_per_page'           => '100',
+        'order'                    => 'DESC',
+        'orderby'                  => 'date',
+        'post_type'                => 'question',
+        'post_status'              => ['publish', 'pending', 'flagged'],
+        'tag'                      => str_replace(' ', '-', strtolower($search)),
+        'tax_query'                => [
+            'relation' => 'AND',
+            [
+                'taxonomy' => 'topics',
+                'field'    => 'term_id',
+                'terms'    => $topic_id,
+            ],
+        ],
+        'search_like'              => $search, // custom search term
+        'topic_id_for_search_like' => $topic_id, // custom search term
+    ];
+    return new WP_Query($args);
+}

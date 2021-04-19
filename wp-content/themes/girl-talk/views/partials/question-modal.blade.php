@@ -1,4 +1,4 @@
-<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="modal-title"
+<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="question-modal"
      role="dialog" aria-modal="true" id="question-modal">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center block sm:p-0">
 
@@ -18,7 +18,7 @@
             <div class="bg-white px-10 py-10">
                 <div class="text-center sm:text-left">
                     <div class="flex justify-start items-center">
-                        <h3 class="text-5xl font-title" id="modal-title">
+                        <h3 class="text-5xl font-title" id="question-modal">
                             Question
                         </h3>
                         <div class="ml-12 w-60">
