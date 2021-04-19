@@ -88,6 +88,9 @@
                                 <a href="{{get_permalink($question->ID)}}" target="_blank"
                                    class="mt-3 hover:underline">{!! mb_strimwidth($question->post_content, 0, 300, '...') !!}</a>
                                 <div class="text-right mt-2 space-x-3">
+                                    @if($tags = wp_get_post_tags($question->ID))
+                                        <span class="bg-accent px-4 py-1 rounded text-xs font-semibold">{{$tags[0]->name}}</span>
+                                    @endif
                                     <button type="button" aria-label="delete question"
                                             class="delete-question italic hover:underline"
                                             title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
