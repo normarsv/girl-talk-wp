@@ -17,9 +17,21 @@
             </button>
             <div class="bg-white px-10 py-10">
                 <div class="text-center sm:text-left">
-                    <h3 class="text-5xl font-title" id="modal-title">
-                        Question
-                    </h3>
+                    <div class="flex justify-start items-center">
+                        <h3 class="text-5xl font-title" id="modal-title">
+                            Question
+                        </h3>
+                        <div class="ml-12 w-60">
+                            <select id="tags" name="question-tags"
+                                    class="mt-3 block text-center w-full appearance-none py-2 px-3 border-none cursor-pointer bg-accent text-white rounded-lg font-semibold"
+                                    aria-label="Question tag">
+                                <option value="">Add a Tag</option>
+                                @foreach(get_tags(['hide_empty' => false]) as $tag)
+                                    <option value="{{$tag->slug}}">{{$tag->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <p class="form-error hidden pr-4 mt-4 pt-2 text-sm text-red-500"></p>
                     <input type="text" name="question-title" class="rounded mt-10 w-full" aria-label="question title"
                            placeholder="Title" required/>

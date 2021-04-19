@@ -6,6 +6,7 @@ export default function () {
         $title = $container.find('[name="question-title"]'),
         $body = $container.find('[name="question-body"]'),
         $topic = $container.find('[name="question-topic"]'),
+        $tags = $container.find('[name="question-tags"]'),
         $errorMsg = $container.find('.form-error')
     ;
 
@@ -36,6 +37,7 @@ export default function () {
                 'title': $title.val(),
                 'body': $body.val(),
                 'tax': $topic.val(),
+                'tags': $tags.val(),
             },
             success: function (data) {
                 const response = JSON.parse(data);

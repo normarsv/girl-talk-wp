@@ -89,6 +89,7 @@ function create_question()
     $title = sanitize_text_field($_POST['title']);
     $body = sanitize_text_field($_POST['body']);
     $tax = sanitize_text_field($_POST['tax']);
+    $tags = sanitize_text_field($_POST['tags']);
     if (!is_user_logged_in()) {
         echo wp_json_encode(['status' => false]);
         wp_die();
@@ -97,6 +98,10 @@ function create_question()
     $post_args = ['post_title' => $title, 'post_content' => $body, 'post_type' => 'question', 'post_status' => 'publish'];
     $post_id = wp_insert_post($post_args);
     wp_set_object_terms($post_id, $tax, 'topics');
+
+    if ($tags != '' && $tags != null) {
+        wp_set_post_tags($post_id, $tags);
+    }
 
     echo wp_json_encode(['status' => true]);
     wp_die();

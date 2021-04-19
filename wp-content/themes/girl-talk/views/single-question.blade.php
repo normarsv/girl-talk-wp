@@ -22,6 +22,17 @@
                     <p class="text-lg mt-3">{!! $post->post_content !!}</p>
                 </div>
                 <div class="text-right mt-2 space-x-4 flex flex-row justify-end items-center">
+                    @if($tags = wp_get_post_tags($post->ID))
+                        <span class="bg-accent px-4 py-1 rounded text-xs font-semibold">{{$tags[0]->name}}</span>
+                    @endif
+                    @if((int)$post->post_author === (int)$user_id)
+                        <button type="button" aria-label="delete question"
+                                class="delete-question italic hover:underline"
+                                title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                data-question-id="{{$post->ID}}">
+                            Delete
+                        </button>
+                    @endif
                     <button type="button" aria-label="answer question" class="open-answer-modal"
                             title="Answer Question">
                         <img src="@asset('images/answer.png')" class="w-6 h-6" alt="">
@@ -30,14 +41,6 @@
                         <button type="button" aria-label="answer question" class="flag-question-trigger" title="Flag Question"
                                 data-question-id="{{$post->ID}}" data-url="{{admin_url('admin-ajax.php')}}">
                             <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
-                        </button>
-                    @endif
-                    @if((int)$post->post_author === (int)$user_id)
-                        <button type="button" aria-label="delete question"
-                                class="delete-question italic hover:underline"
-                                title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
-                                data-question-id="{{$post->ID}}">
-                            Delete
                         </button>
                     @endif
                 </div>

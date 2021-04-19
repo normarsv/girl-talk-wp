@@ -55,12 +55,8 @@
                     <a href="{{get_permalink()}}"
                        class="mt-3 hover:underline">{{mb_strimwidth(get_the_content(), 0, 300, '...')}}</a>
                     <div class="text-right mt-2 space-x-5 flex flex-row justify-end items-center">
-                        @if(get_post_status($post_id) !== 'flagged')
-                            <button type="button" aria-label="flag question" class="flag-question-trigger"
-                                    data-question-id="{{$post_id}}" data-url="{{admin_url('admin-ajax.php')}}"
-                                    title="Flag Question">
-                                <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
-                            </button>
+                        @if($tags = wp_get_post_tags($post_id))
+                            <span class="bg-accent px-4 py-1 rounded text-xs font-semibold">{{$tags[0]->name}}</span>
                         @endif
                         @if((int)get_the_author_meta('ID') === (int)get_current_user_id())
                             <button type="button" aria-label="delete question"
@@ -68,6 +64,13 @@
                                     title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
                                     data-question-id="{{$post_id}}">
                                 Delete
+                            </button>
+                        @endif
+                        @if(get_post_status($post_id) !== 'flagged')
+                            <button type="button" aria-label="flag question" class="flag-question-trigger"
+                                    data-question-id="{{$post_id}}" data-url="{{admin_url('admin-ajax.php')}}"
+                                    title="Flag Question">
+                                <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
                             </button>
                         @endif
                     </div>

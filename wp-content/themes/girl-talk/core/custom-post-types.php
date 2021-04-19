@@ -12,7 +12,7 @@ function custom_post_type_setup()
             'has_archive'        => true,
             'rewrite'            => ['slug' => 'question'],
             'menu_icon'          => 'dashicons-format-quote',
-            'taxonomies'         => ['topics']
+            'taxonomies'         => ['topics', 'post_tag']
         ],
     ];
 
