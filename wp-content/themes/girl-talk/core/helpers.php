@@ -88,3 +88,8 @@ function gt_search_posts($search, $topic_id)
     ];
     return new WP_Query($args);
 }
+
+function gt_escape_br($content)
+{
+    return preg_replace('/\<br\b[^>]*>/i', ' ', $content);
+}

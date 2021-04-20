@@ -14,6 +14,17 @@ function custom_post_type_setup()
             'menu_icon'          => 'dashicons-format-quote',
             'taxonomies'         => ['topics', 'post_tag']
         ],
+        [
+            'name'               => 'blog',
+            'exclude_sites'      => [],
+            'publicly_queryable' => true,
+            'singular_label'     => 'Blog',
+            'plural_label'       => 'Blog',
+            'has_archive'        => true,
+            'rewrite'            => ['slug' => 'blog'],
+            'menu_icon'          => 'dashicons-welcome-write-blog',
+            'taxonomies'         => []
+        ],
     ];
 
     foreach ($post_types as $post_type) {

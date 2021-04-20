@@ -9,3 +9,4 @@ include_once('core/acf-configuration.php');
 include_once('core/helpers.php');
 include_once('core/theme-setup.php');
 include_once('core/ajax-functions.php');
+include_once('core/shortcodes.php');

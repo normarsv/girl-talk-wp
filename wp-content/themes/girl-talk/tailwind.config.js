@@ -35,6 +35,19 @@ module.exports = {
                 '460': '460px',
                 '160': '160px',
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        img: {
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                            marginTop: '0 !important',
+                            marginBottom: '0 !important',
+                            width: '100%',
+                        },
+                    },
+                }
+            }
         },
         minWidth: {
             '400': '400px',
