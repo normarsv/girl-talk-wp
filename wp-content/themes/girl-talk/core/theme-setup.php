@@ -108,10 +108,7 @@ add_filter('retrieve_password_message', function ($message, $key, $user_login, $
         return $message;
     }
 
-    $msg = 'Hello! <br><br>';
-    $msg .= sprintf('You asked us to reset your password for your account using the email address %s.', $user_login) . '<br><br>';
-    $msg .= 'To reset your password, visit the following address: <br><br>';
-    $msg .= site_url("forgot-pass?action=rp&key=$key&login=" . rawurlencode($user_login), 'login');
+    $msg = gt_recover_pass_email_template(site_url("forgot-pass?action=rp&key=$key&login=" . rawurlencode($user_login), 'login'));
 
     return $msg;
 }, 10, 4);

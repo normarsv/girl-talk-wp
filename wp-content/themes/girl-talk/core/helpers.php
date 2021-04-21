@@ -36,7 +36,7 @@ function gt_create_user($username, $password, $email)
     add_user_meta($user_id, 'verify_token', $token);
 
     $url = get_site_url() . '?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
-    $html = 'Please validate your account <br/><br/> <a href="' . $url . '">' . $url . '</a>';
+    $html = gt_verify_email_template($url);
 
     wp_mail($email, 'GT verify your account', $html);
 }
@@ -92,4 +92,24 @@ function gt_search_posts($search, $topic_id)
 function gt_escape_br($content)
 {
     return preg_replace('/\<br\b[^>]*>/i', ' ', $content);
+}
+
+function gt_verify_email_template($url){
+    ob_start();
+    include(get_stylesheet_directory() . '/views/email-templates/verify-account.html');
+    $email_content = ob_get_contents();
+    ob_end_clean();
+
+    $email_content = str_replace("!--VERIFY-URL--!",$url, $email_content);
+    return $email_content;
+}
+
+function gt_recover_pass_email_template($url){
+    ob_start();
+    include(get_stylesheet_directory() . '/views/email-templates/recovery-password.html');
+    $email_content = ob_get_contents();
+    ob_end_clean();
+
+    $email_content = str_replace("!--VERIFY-URL--!", $url, $email_content);
+    return $email_content;
 }
