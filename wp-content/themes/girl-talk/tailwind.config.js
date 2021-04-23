@@ -2,6 +2,7 @@ module.exports = {
     purge: [
         './views/**/*.blade.php',
         './assets/js/**/*.js',
+        './core/shortcodes.php',
     ],
     darkMode: false,
     theme: {
