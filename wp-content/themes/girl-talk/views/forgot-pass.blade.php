@@ -4,12 +4,12 @@
     <section class="container max-w-none xl:max-w-6xl pt-12 pb-28">
         <div class="text-center">
             @include('elements.section-title',['text'=>'Recover your password'])
-            <p class="text-lg md:text-xl mt-5">Please add your username or email and a link will be sent to you.</p>
+            <p class="text-lg md:text-xl mt-5">Please enter your username or email and a link will be sent to you.</p>
         </div>
 
         <form action="{{wp_lostpassword_url('forgot-pass?recovery=sent')}}" class="flex flex-col mt-20 space-y-12 md:w-96 m-auto" method="POST">
             @if(isset($_GET['recovery']))
-                <p class="text-green-700 px-5 py-2 text-center bg-accent-light rounded">Check your email for the recovery link.</p>
+                <p class="text-gray-800 px-5 py-2 text-center bg-accent-light rounded">Check your email for the recovery link.</p>
             @endif
             @if(isset($_GET['fail']))
                 <p class="text-red-700 px-5 py-2 text-center bg-accent-light rounded">User doesn't exist.</p>

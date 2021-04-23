@@ -19,7 +19,7 @@
                 <p class="text-red-700 px-5 py-2 bg-accent-light rounded">Invalid reset key, try again.</p>
             @endif
             @if(isset($_GET['password']) && $_GET['password'] == 'changed')
-                <p class="text-green-700 px-5 py-2 bg-accent-light rounded">Password updated.</p>
+                <p class="text-gray-800 px-5 py-2 bg-accent-light rounded">Password updated.</p>
             @endif
             @include('elements.input',['name'=>'log', 'placeholder'=>'Username or Email','type'=>'text', 'required'=>'' ])
             @include('elements.input',['name'=>'pwd', 'placeholder'=>'Password','type'=>'password', 'required'=>'' ])

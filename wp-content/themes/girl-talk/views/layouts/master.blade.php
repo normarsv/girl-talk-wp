@@ -13,6 +13,10 @@
 </head>
 <body @php body_class(get_field('background_color') == 'pink' ? 'bg-accent-light':'bg-white') @endphp>
 
+@if(get_field('popup_is_active','option'))
+    @include('components.popup',['type'=>get_field('popup_type','option')])
+@endif
+
 @include('partials.navigation')
 
 <main class="page-content" id="content">

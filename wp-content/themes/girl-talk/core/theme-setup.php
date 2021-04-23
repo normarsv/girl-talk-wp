@@ -179,3 +179,11 @@ add_action('phpmailer_init', function ($phpmailer) {
 add_filter('wp_mail_content_type', function () {
     return "text/html";
 });
+
+add_filter('wp_mail_from', function () {
+    return "no-reply@girltalk.com";
+});
+
+add_filter('wp_mail_from_name', function () {
+    return "Girl Talk";
+});

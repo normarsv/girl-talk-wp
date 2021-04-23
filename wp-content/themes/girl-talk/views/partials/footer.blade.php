@@ -37,7 +37,7 @@
                             </svg>
                         </button>
                     </div>
-                    <p class="hidden text-green-800 text-sm font-bold mt-3" id="newsletter_success_msg"
+                    <p class="hidden text-gray-800 text-sm font-bold mt-3" id="newsletter_success_msg"
                        aria-assertive="true">Thanks for subscribing!</p>
                 </form>
             </div>

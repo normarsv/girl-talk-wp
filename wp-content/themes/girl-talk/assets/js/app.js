@@ -11,6 +11,7 @@ import editEmail from "./edit-email";
 import flagQuestion from "./flag-question";
 import inviteFriend from "./invite-friend";
 import search from "./search";
+import popup from "./popup";
 
 function init() {
     const components = [
@@ -26,7 +27,8 @@ function init() {
         editEmail,
         flagQuestion,
         inviteFriend,
-        search
+        search,
+        popup
     ];
 
     components.forEach(component => {
