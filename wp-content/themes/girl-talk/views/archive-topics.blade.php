@@ -66,38 +66,44 @@
         @endif
 
         <div class="mt-10 md:mt-20 mb-36 space-y-14">
-            @while($posts->have_posts())
-                @php $posts->the_post(); $post_id = get_the_ID() @endphp
-                <div class="bg-white shadow-accent p-5 md:p-8 rounded-3xl flex flex-col">
-                    <p><img class="w-8 inline" src="@asset('images/'.get_the_author_meta('gt_icon').'.png')}}"
-                            alt="">{{get_the_author()}}</p>
-                    <p>{{get_the_date('m/d/y')}}</p>
-                    <a href="{{get_permalink()}}"
-                       class="text-lg mt-1 font-semibold hover:underline leading-6">{{mb_strimwidth(get_the_title(),0,100,'...')}}</a>
-                    <a href="{{get_permalink()}}"
-                       class="mt-3 hover:underline">{{mb_strimwidth(get_the_content(), 0, 300, '...')}}</a>
-                    <div class="text-right mt-2 space-x-5 flex flex-row justify-end items-center">
-                        @if($tags = wp_get_post_tags($post_id))
-                            <span class="bg-accent px-4 py-1 rounded text-xs font-semibold">{{$tags[0]->name}}</span>
-                        @endif
-                        @if((int)get_the_author_meta('ID') === (int)get_current_user_id())
-                            <button type="button" aria-label="delete question"
-                                    class="delete-question italic hover:underline"
-                                    title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
-                                    data-question-id="{{$post_id}}">
-                                Delete
-                            </button>
-                        @endif
-                        @if(get_post_status($post_id) !== 'flagged')
-                            <button type="button" aria-label="flag question" class="flag-question-trigger"
-                                    data-question-id="{{$post_id}}" data-url="{{admin_url('admin-ajax.php')}}"
-                                    title="Flag Question">
-                                <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
-                            </button>
-                        @endif
+            @if($posts->have_posts())
+                @while($posts->have_posts())
+                    @php $posts->the_post(); $post_id = get_the_ID() @endphp
+                    <div class="bg-white shadow-accent p-5 md:p-8 rounded-3xl flex flex-col">
+                        <p><img class="w-8 inline" src="@asset('images/'.get_the_author_meta('gt_icon').'.png')}}"
+                                alt="">{{get_the_author()}}</p>
+                        <p>{{get_the_date('m/d/y')}}</p>
+                        <a href="{{get_permalink()}}"
+                           class="text-lg mt-1 font-semibold hover:underline leading-6">{{mb_strimwidth(get_the_title(),0,100,'...')}}</a>
+                        <a href="{{get_permalink()}}"
+                           class="mt-3 hover:underline">{{mb_strimwidth(get_the_content(), 0, 300, '...')}}</a>
+                        <div class="text-right mt-2 space-x-5 flex flex-row justify-end items-center">
+                            @if($tags = wp_get_post_tags($post_id))
+                                <span class="bg-accent px-4 py-1 rounded text-xs font-semibold">{{$tags[0]->name}}</span>
+                            @endif
+                            @if((int)get_the_author_meta('ID') === (int)get_current_user_id())
+                                <button type="button" aria-label="delete question"
+                                        class="delete-question italic hover:underline"
+                                        title="Delete" data-url="{{admin_url('admin-ajax.php')}}"
+                                        data-question-id="{{$post_id}}">
+                                    Delete
+                                </button>
+                            @endif
+                            @if(get_post_status($post_id) !== 'flagged')
+                                <button type="button" aria-label="flag question" class="flag-question-trigger"
+                                        data-question-id="{{$post_id}}" data-url="{{admin_url('admin-ajax.php')}}"
+                                        title="Flag Question">
+                                    <img src="@asset('images/flag.png')" class="w-6 h-6" alt="">
+                                </button>
+                            @endif
+                        </div>
                     </div>
+                @endwhile
+            @else
+                <div class="bg-white p-5 md:p-8 flex flex-col text-center text-xl text-gray-400 font-semibold">
+                    No questions yet!
                 </div>
-            @endwhile
+            @endif
         </div>
     </section>
     @include('partials.search-modal')

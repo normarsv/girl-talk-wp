@@ -172,7 +172,7 @@ add_action('phpmailer_init', function ($phpmailer) {
     $phpmailer->SMTPAuth = true;
     $phpmailer->Username = SMTP_USERNAME;
     $phpmailer->Password = SMTP_PASSWORD;
-    $phpmailer->From = 'no-reply@girltalk.com';
+    $phpmailer->From = 'noreplygirltalk@gmail.com';
     $phpmailer->FromName = 'Girl Talk';
 });
 
@@ -181,7 +181,7 @@ add_filter('wp_mail_content_type', function () {
 });
 
 add_filter('wp_mail_from', function () {
-    return "no-reply@girltalk.com";
+    return "noreplygirltalk@gmail.com ";
 });
 
 add_filter('wp_mail_from_name', function () {

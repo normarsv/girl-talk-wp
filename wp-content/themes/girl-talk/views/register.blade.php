@@ -3,7 +3,7 @@
 @section('content')
     <section class="container max-w-none xl:max-w-6xl pt-12 pb-28">
         <div id="register-block">
-            <img src="@asset('images/progress_bar.png')" class="w-2/3 md:w-1/3 m-auto" alt="">
+            <div class="w-2/3 md:w-1/3 m-auto rounded h-5 bg-gradient-to-r from-accent to-white"></div>
             <div class="text-center mt-16">
                 @include('elements.section-title', ['text'=>'Let’s Make your Account'])
                 <p class="text-lg md:text-xl mt-5">To keep your account anonymous, be creative with your username.</p>

@@ -1,4 +1,5 @@
-<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="question-modal"
+<div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none"
+     aria-labelledby="question-modal"
      role="dialog" aria-modal="true" id="question-modal">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center block sm:p-0">
 
@@ -21,16 +22,21 @@
                         <h3 class="text-5xl font-title" id="question-modal">
                             Question
                         </h3>
-                        <div class="ml-12 w-60">
-                            <select id="tags" name="question-tags"
-                                    class="mt-3 block text-center w-full appearance-none py-2 px-3 border-none cursor-pointer bg-accent text-white rounded-lg font-semibold"
-                                    aria-label="Question tag">
-                                <option value="">Add a Tag</option>
-                                @foreach(get_tags(['hide_empty' => false]) as $tag)
-                                    <option value="{{$tag->slug}}">{{$tag->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @php $tags = get_tags(['hide_empty' => false]) @endphp
+                        @if(count($tags))
+                            <div class="ml-12 w-60">
+                                <select id="tags" name="question-tags"
+                                        class="mt-3 block text-center w-full appearance-none py-2 px-3 border-none cursor-pointer bg-accent text-white rounded-lg font-semibold"
+                                        aria-label="Question tag">
+                                    <option value="">Add a Tag</option>
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->slug}}">{{$tag->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @else
+                            <input type="hidden" name="question-tags">
+                        @endif
                     </div>
                     <p class="form-error hidden pr-4 mt-4 pt-2 text-sm text-red-500"></p>
                     <input type="text" name="question-title" class="rounded mt-10 w-full" aria-label="question title"

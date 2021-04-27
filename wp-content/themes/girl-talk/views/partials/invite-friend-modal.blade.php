@@ -1,3 +1,8 @@
+@php
+    $image = get_field('invite_friend_image','option');
+    $title = get_field('invite_friend_title','option');
+    $text = get_field('invite_friend_text','option');
+@endphp
 <div class="fixed z-10 inset-0 overflow-y-auto opacity-0 gt-modal" style="display: none" aria-labelledby="invite-modal"
      role="dialog" aria-modal="true" id="invite-friend-modal">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 md:pb-20 text-center sm:block sm:p-0">
@@ -18,11 +23,10 @@
             <div class="bg-white p-10 flex flex-row">
                 <div class="text-center w-full md:w-1/2 md:pr-10">
                     <h3 class="text-2xl font-semibold" id="invite-modal">
-                        Invite a Friend
+                        {{$title}}
                     </h3>
                     <p class="mt-5">
-                        Know a friend that would love Girl Talk?
-                        Send them a note below and invite them to join!
+                        {{$text}}
                     </p>
                     <p class="form-error hidden pr-4 mt-4 pt-2 text-sm text-red-500"></p>
                     <input type="text" name="email" class="rounded mt-5 w-full" aria-label="Change your email"
@@ -38,7 +42,7 @@
                     </button>
                 </div>
 
-                <img class="w-1/2 hidden md:block" src="@asset('images/gt_invite_friend.jpg')" alt="">
+                <img class="w-1/2 hidden md:block" src="{{$image['sizes']['large']}}" alt="" aria-hidden="true">
             </div>
         </div>
     </div>

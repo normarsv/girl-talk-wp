@@ -9,7 +9,7 @@
         </div>
 
         <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5 gap-y-20 lg:gap-32">
-            @php $terms = get_categories('taxonomy=topics&type=question') @endphp
+            @php $terms = get_categories(['taxonomy'=>'topics','type'=>'question','hide_empty'=>false]) @endphp
             @foreach($terms as $term)
                 @set($image = get_field('featured_image', $term))
                 <a href="{{get_term_link($term)}}" aria-label="{{ $term->name }}" class="w-52 relative m-auto">
@@ -24,7 +24,8 @@
                 <div class="aspect-w-8 aspect-h-10 rounded shadow-lg shadow-accent"></div>
                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-3 text-center">
                     <p class="font-semibold">Have an idea for a topic we should add?</p>
-                    <a class="text-sm hover:underline pt-1" href="mailto:hello@weneedtogirltalk.com">Click here and let us know!</a>
+                    <a class="text-sm hover:underline pt-1" href="mailto:hello@weneedtogirltalk.com">Click here and let
+                        us know!</a>
                 </div>
             </div>
         </div>
