@@ -187,3 +187,13 @@ add_filter('wp_mail_from', function () {
 add_filter('wp_mail_from_name', function () {
     return "Girl Talk";
 });
+
+add_action('wp_insert_comment', function (int $id, WP_Comment $comment) {
+    $post_creator = get_userdata(get_post($comment->comment_post_ID)->post_author);
+    $url = get_permalink($comment->comment_post_ID);
+    $creator_username = get_userdata($comment->user_id);
+    $content = $comment->comment_content;
+    $html = gt_question_reply_template($url, $creator_username->user_login, $content);
+
+    wp_mail($post_creator->user_email, 'Girl Talk - You got a new reply', $html);
+}, 10, 2);

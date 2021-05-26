@@ -218,8 +218,12 @@ function invite_friend()
 
     //TODO: Refactor this with a faster and proper solution
     echo wp_json_encode(['status' => true]);
+
+    $url = site_url();
+    $html = gt_invite_friend_template($url, $body);
+    
     foreach ($emails as $email) {
-        wp_mail($email, 'Girl Talk Invite!', nl2br($body));
+        wp_mail($email, 'Girl Talk Invite!', $html);
     }
     wp_die();
 }

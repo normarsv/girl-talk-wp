@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="pl-10 mt-10 space-y-10">
-                @foreach(get_comments(['post_id'=>$post->ID]) as $comment)
+                @foreach(get_comments(['post_id'=>$post->ID,'order'=>'ASC']) as $comment)
                     <div class="flex flex-col">
                         <p><img class="w-8 inline"
                                 src="@asset('images/'.get_the_author_meta('gt_icon', $comment->user_id).'.png')}}"
@@ -70,4 +70,3 @@
     </section>
     @include('partials.answer-modal',['post_id'=>$post->ID, 'question'=>$post->post_content])
 @endsection
-

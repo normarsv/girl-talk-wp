@@ -9,7 +9,10 @@
         </div>
         <div class="w-full my-12 border border-t-0 border-accent"></div>
 
-        <div class="w-2/3 md:w-1/3 m-auto rounded h-5 bg-gradient-to-r from-accent via-accent to-white"></div>
+        <div class="mt-16">
+            @include('elements.progress-bar',['step'=>3])
+        </div>
+        
         <div class="text-center mt-14">
             <h3 class="text-5xl font-title">This or That? <span class="text-lg md:text-xl font-sans font-normal block md:inline">Choose which best describes you.</span>
             </h3>

@@ -33,7 +33,7 @@
                     <button type="submit"
                             id="answer-submit"
                             data-url="{{admin_url('admin-ajax.php')}}"
-                            class="bg-accent mt-10 w-72 m-auto block px-4 py-2 rounded-lg font-semibold text-white">
+                            class="bg-accent mt-10 w-72 m-auto block px-4 py-2 rounded-lg font-semibold text-white disabled:opacity-40">
                         Submit
                     </button>
                 </div>

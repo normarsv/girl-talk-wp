@@ -38,7 +38,7 @@ function gt_create_user($username, $password, $email)
     $url = get_site_url() . '?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
     $html = gt_verify_email_template($url);
 
-    wp_mail($email, 'GT verify your account', $html);
+    wp_mail($email, 'Girl Talk - Verify your account', $html);
 }
 
 function gt_redirect_verified_users()
@@ -113,6 +113,33 @@ function gt_recover_pass_email_template($url){
     ob_end_clean();
 
     $email_content = str_replace("!--VERIFY-URL--!", $url, $email_content);
+//    $email_content = str_replace("!--GT_LOGO--!",get_home_url(null, 'dist/images/gt_logo.png'), $email_content); // Use this on production
+    $email_content = str_replace("!--GT_LOGO--!",'http://girl-talk.guaodev.com/wp-content/themes/girl-talk/dist/images/gt_logo.png', $email_content);
+    return $email_content;
+}
+
+function gt_question_reply_template($url, $creator_login, $content){
+    ob_start();
+    include(get_stylesheet_directory() . '/views/email-templates/reply.html');
+    $email_content = ob_get_contents();
+    ob_end_clean();
+
+    $email_content = str_replace("!--REPLY-URL--!", $url, $email_content);
+    $email_content = str_replace("!--REPLY-CONTENT-CREATOR--!", $creator_login, $email_content);
+    $email_content = str_replace("!--REPLY-CONTENT--!", $content, $email_content);
+//    $email_content = str_replace("!--GT_LOGO--!",get_home_url(null, 'dist/images/gt_logo.png'), $email_content); // Use this on production
+    $email_content = str_replace("!--GT_LOGO--!",'http://girl-talk.guaodev.com/wp-content/themes/girl-talk/dist/images/gt_logo.png', $email_content);
+    return $email_content;
+}
+
+function gt_invite_friend_template($url, $content){
+    ob_start();
+    include(get_stylesheet_directory() . '/views/email-templates/invite-friend.html');
+    $email_content = ob_get_contents();
+    ob_end_clean();
+
+    $email_content = str_replace("!--URL--!", $url, $email_content);
+    $email_content = str_replace("!--CONTENT--!", $content, $email_content);
 //    $email_content = str_replace("!--GT_LOGO--!",get_home_url(null, 'dist/images/gt_logo.png'), $email_content); // Use this on production
     $email_content = str_replace("!--GT_LOGO--!",'http://girl-talk.guaodev.com/wp-content/themes/girl-talk/dist/images/gt_logo.png', $email_content);
     return $email_content;

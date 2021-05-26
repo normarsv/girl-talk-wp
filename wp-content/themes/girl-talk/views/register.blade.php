@@ -3,7 +3,7 @@
 @section('content')
     <section class="container max-w-none xl:max-w-6xl pt-12 pb-28">
         <div id="register-block">
-            <div class="w-2/3 md:w-1/3 m-auto rounded h-5 bg-gradient-to-r from-accent to-white"></div>
+            @include('elements.progress-bar',['step'=>1])
             <div class="text-center mt-16">
                 @include('elements.section-title', ['text'=>'Let’s Make your Account'])
                 <p class="text-lg md:text-xl mt-5">To keep your account anonymous, be creative with your username.</p>
@@ -32,7 +32,8 @@
             </p>
         </div>
         <div class="hidden text-center" id="register-verify">
-            <img class="w-28 m-auto" src="@asset('images/cowboyhat.png')" alt="">
+            @include('elements.progress-bar',['step'=>2])
+            <img class="w-28 m-auto mt-16" src="@asset('images/cowboyhat.png')" alt="">
             <h2 class="mt-5 font-semibold text-3xl">Check your email</h2>
             <p class="text-xl mt-3">We just sent you a link to verify your account.</p>
             {{--            <p class="text-md mt-7">--}}
