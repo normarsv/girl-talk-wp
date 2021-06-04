@@ -2,7 +2,7 @@ export default function () {
     const $flagButton = $('.flag-question-trigger');
 
     $flagButton.click(function () {
-        const confirmed = confirm('Are you sure to mark this post as flagged?')
+        const confirmed = confirm('Are you sure you want to mark this post as flagged?')
         const $that = $(this)
 
         if (confirmed) {

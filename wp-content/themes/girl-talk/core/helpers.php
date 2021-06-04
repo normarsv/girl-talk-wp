@@ -38,7 +38,7 @@ function gt_create_user($username, $password, $email)
     $url = get_site_url() . '?account-verify=' . base64_encode(serialize(['id' => $user_id, 'code' => $token]));
     $html = gt_verify_email_template($url);
 
-    wp_mail($email, 'Girl Talk - Verify your account', $html);
+    wp_mail($email, 'Girl Talk - Verify Your Account', $html);
 }
 
 function gt_redirect_verified_users()

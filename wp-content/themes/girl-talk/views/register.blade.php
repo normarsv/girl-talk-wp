@@ -34,7 +34,7 @@
         <div class="hidden text-center" id="register-verify">
             @include('elements.progress-bar',['step'=>2])
             <img class="w-28 m-auto mt-16" src="@asset('images/cowboyhat.png')" alt="">
-            <h2 class="mt-5 font-semibold text-3xl">Check your email</h2>
+            <h2 class="mt-5 font-semibold text-3xl">Check your email!</h2>
             <p class="text-xl mt-3">We just sent you a link to verify your account.</p>
             {{--            <p class="text-md mt-7">--}}
             {{--                Didn’t receive an email? Whoops! <button type="button" class="text-accent underline">Click here to resend.</button>--}}

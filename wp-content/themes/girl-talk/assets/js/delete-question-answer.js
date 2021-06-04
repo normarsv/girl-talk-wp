@@ -3,7 +3,7 @@ export default function () {
     const $deleteQuestionButton = $('.delete-question');
 
     $deleteQuestionButton.click(function () {
-        const confirmed = confirm("Are you sure to delete this post?");
+        const confirmed = confirm("Are you sure you want to delete this post?");
         if (confirmed) {
             $.ajax({
                 url: $(this).data('url'),
@@ -30,7 +30,7 @@ export default function () {
     const $deleteAnswerButton = $('.delete-answer');
 
     $deleteAnswerButton.click(function () {
-        const confirmed = confirm("Are you sure to delete this answer?");
+        const confirmed = confirm("Are you sure you want to delete this answer?");
         if (confirmed) {
             $.ajax({
                 url: $(this).data('url'),
