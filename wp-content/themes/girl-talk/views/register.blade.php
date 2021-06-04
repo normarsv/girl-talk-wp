@@ -5,7 +5,7 @@
         <div id="register-block">
             @include('elements.progress-bar',['step'=>1])
             <div class="text-center mt-16">
-                @include('elements.section-title', ['text'=>'Let’s Make your Account'])
+                @include('elements.section-title', ['text'=>'Let’s make your account'])
                 <p class="text-lg md:text-xl mt-5">To keep your account anonymous, be creative with your username.</p>
             </div>
 
